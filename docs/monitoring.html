@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Container Monitoring - DockScope Documentation</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="docs.css" />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="icon" type="image/png" href="../assets/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../assets/logo.svg" alt="DockScope" class="logo" />
+                <span class="logo-text">DockScope</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../index.html#features" class="nav-link">Features</a>
+                <a href="https://github.com/GovindSingh9447/DockScope" target="_blank" class="nav-link">GitHub</a>
+                <a href="index.html" class="nav-link active">Documentation</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-buttons">
+                <a href="../demo.html" class="btn btn-secondary">Try Demo</a>
+                <a href="../index.html#get-started" class="btn btn-primary">Get Started Free</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Documentation Content -->
+    <section class="docs-content">
+        <div class="docs-sidebar">
+            <div class="docs-nav">
+                <h3>Getting Started</h3>
+                <ul>
+                    <li><a href="installation.html"><i class="fas fa-download"></i> Installation</a></li>
+                    <li><a href="quickstart.html"><i class="fas fa-rocket"></i> Quick Start</a></li>
+                    <li><a href="configuration.html"><i class="fas fa-cog"></i> Configuration</a></li>
+                </ul>
+
+                <h3>Core Features</h3>
+                <ul>
+                    <li><a href="monitoring.html" class="active"><i class="fas fa-chart-line"></i> Container Monitoring</a></li>
+                    <li><a href="alerts.html"><i class="fas fa-bell"></i> Alerting System</a></li>
+                    <li><a href="metrics.html"><i class="fas fa-tachometer-alt"></i> Metrics & Analytics</a></li>
+                    <li><a href="logs.html"><i class="fas fa-file-alt"></i> Log Management</a></li>
+                </ul>
+
+                <h3>Advanced Topics</h3>
+                <ul>
+                    <li><a href="api.html"><i class="fas fa-code"></i> API Reference</a></li>
+                    <li><a href="deployment.html"><i class="fas fa-server"></i> Production Deployment</a></li>
+                    <li><a href="security.html"><i class="fas fa-shield-alt"></i> Security</a></li>
+                    <li><a href="troubleshooting.html"><i class="fas fa-wrench"></i> Troubleshooting</a></li>
+                </ul>
+
+                <h3>Guides</h3>
+                <ul>
+                    <li><a href="best-practices.html"><i class="fas fa-star"></i> Best Practices</a></li>
+                    <li><a href="examples.html"><i class="fas fa-lightbulb"></i> Examples</a></li>
+                    <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="docs-main">
+            <div class="docs-welcome">
+                <h1>Container Monitoring</h1>
+                <p>Learn how to effectively monitor your Docker containers using DockScope's comprehensive monitoring features.</p>
+
+                <div class="docs-alert info">
+                    <strong>Real-time Monitoring:</strong> DockScope provides real-time insights into your container performance and health.
+                </div>
+
+                <h2>Overview</h2>
+                <p>DockScope's container monitoring system provides comprehensive insights into your Docker containers, including:</p>
+
+                <div class="docs-features">
+                    <ul>
+                        <li><strong>Real-time Metrics:</strong> CPU, memory, network, and disk usage</li>
+                        <li><strong>Container Status:</strong> Running, stopped, paused, and restart counts</li>
+                        <li><strong>Performance Analytics:</strong> Historical data and trends</li>
+                        <li><strong>Health Checks:</strong> Container health monitoring</li>
+                        <li><strong>Resource Limits:</strong> Monitor resource constraints</li>
+                        <li><strong>Multi-host Support:</strong> Monitor containers across multiple hosts</li>
+                    </ul>
+                </div>
+
+                <h2>Dashboard Overview</h2>
+                <p>The main monitoring dashboard provides a comprehensive view of your container environment:</p>
+
+                <h3>System Overview</h3>
+                <ul>
+                    <li><strong>Total Containers:</strong> Number of containers across all hosts</li>
+                    <li><strong>Running Containers:</strong> Currently active containers</li>
+                    <li><strong>System Resources:</strong> Overall CPU, memory, and disk usage</li>
+                    <li><strong>Recent Alerts:</strong> Latest alert notifications</li>
+                </ul>
+
+                <h3>Container List</h3>
+                <p>The container list shows all containers with key information:</p>
+                <ul>
+                    <li><strong>Container Name:</strong> Human-readable container name</li>
+                    <li><strong>Image:</strong> Docker image used</li>
+                    <li><strong>Status:</strong> Current container state</li>
+                    <li><strong>CPU Usage:</strong> Current CPU utilization</li>
+                    <li><strong>Memory Usage:</strong> Current memory consumption</li>
+                    <li><strong>Uptime:</strong> How long the container has been running</li>
+                    <li><strong>Actions:</strong> Quick actions (start, stop, restart, logs)</li>
+                </ul>
+
+                <h2>Metrics Collection</h2>
+                <p>DockScope collects various metrics from your containers:</p>
+
+                <h3>CPU Metrics</h3>
+                <ul>
+                    <li><strong>CPU Usage Percentage:</strong> Current CPU utilization</li>
+                    <li><strong>CPU Time:</strong> Total CPU time used</li>
+                    <li><strong>CPU Throttling:</strong> CPU throttling events</li>
+                    <li><strong>CPU Limits:</strong> Container CPU limits</li>
+                </ul>
+
+                <h3>Memory Metrics</h3>
+                <ul>
+                    <li><strong>Memory Usage:</strong> Current memory consumption</li>
+                    <li><strong>Memory Limit:</strong> Container memory limit</li>
+                    <li><strong>Memory Cache:</strong> Cached memory usage</li>
+                    <li><strong>Memory Swap:</strong> Swap memory usage</li>
+                </ul>
+
+                <h3>Network Metrics</h3>
+                <ul>
+                    <li><strong>Bytes Received:</strong> Network bytes received</li>
+                    <li><strong>Bytes Transmitted:</strong> Network bytes sent</li>
+                    <strong>Packets Received:</strong> Network packets received</li>
+                    <li><strong>Packets Transmitted:</strong> Network packets sent</li>
+                    <li><strong>Network Errors:</strong> Network error count</li>
+                </ul>
+
+                <h3>Disk Metrics</h3>
+                <ul>
+                    <li><strong>Bytes Read:</strong> Disk bytes read</li>
+                    <li><strong>Bytes Written:</strong> Disk bytes written</li>
+                    <li><strong>Read Operations:</strong> Disk read operations</li>
+                    <li><strong>Write Operations:</strong> Disk write operations</li>
+                    <li><strong>Disk Space:</strong> Container disk usage</li>
+                </ul>
+
+                <h2>Container Details</h2>
+                <p>Click on any container to view detailed information:</p>
+
+                <h3>Overview Tab</h3>
+                <ul>
+                    <li><strong>Basic Information:</strong> Container ID, image, command, ports</li>
+                    <li><strong>Resource Usage:</strong> Current CPU, memory, network, disk usage</li>
+                    <li><strong>Status Information:</strong> Container state, restart count, uptime</li>
+                    <li><strong>Environment Variables:</strong> Container environment variables</li>
+                    <li><strong>Labels:</strong> Docker labels and metadata</li>
+                </ul>
+
+                <h3>Metrics Tab</h3>
+                <ul>
+                    <li><strong>Real-time Charts:</strong> Live performance graphs</li>
+                    <li><strong>Historical Data:</strong> Performance trends over time</li>
+                    <li><strong>Custom Time Ranges:</strong> View data for specific periods</li>
+                    <li><strong>Metric Comparison:</strong> Compare different metrics</li>
+                </ul>
+
+                <h3>Logs Tab</h3>
+                <ul>
+                    <li><strong>Real-time Logs:</strong> Live container log output</li>
+                    <li><strong>Log Filtering:</strong> Filter logs by level, time, or content</li>
+                    <li><strong>Log Download:</strong> Download log files</li>
+                    <li><strong>Log Search:</strong> Search through log content</li>
+                </ul>
+
+                <h3>Actions Tab</h3>
+                <ul>
+                    <li><strong>Container Control:</strong> Start, stop, restart, pause containers</li>
+                    <li><strong>Resource Limits:</strong> Set CPU and memory limits</li>
+                    <li><strong>Port Management:</strong> View and manage port mappings</li>
+                    <li><strong>Volume Management:</strong> Manage container volumes</li>
+                </ul>
+
+                <h2>Performance Monitoring</h2>
+                <p>Monitor container performance and identify bottlenecks:</p>
+
+                <h3>Performance Indicators</h3>
+                <ul>
+                    <li><strong>High CPU Usage:</strong> Containers using >80% CPU consistently</li>
+                    <li><strong>High Memory Usage:</strong> Containers using >90% memory</li>
+                    <li><strong>Network Bottlenecks:</strong> High network I/O or errors</li>
+                    <li><strong>Disk I/O Issues:</strong> High disk read/write operations</li>
+                    <li><strong>Container Restarts:</strong> Frequent container restarts</li>
+                </ul>
+
+                <h3>Performance Optimization</h3>
+                <ul>
+                    <li><strong>Resource Limits:</strong> Set appropriate CPU and memory limits</li>
+                    <li><strong>Container Optimization:</strong> Optimize container images and configurations</li>
+                    <li><strong>Load Balancing:</strong> Distribute load across multiple containers</li>
+                    <li><strong>Monitoring Alerts:</strong> Set up alerts for performance issues</li>
+                </ul>
+
+                <h2>Health Monitoring</h2>
+                <p>Monitor container health and availability:</p>
+
+                <h3>Health Checks</h3>
+                <ul>
+                    <li><strong>Container Status:</strong> Monitor running, stopped, and failed containers</li>
+                    <li><strong>Health Endpoints:</strong> Monitor application health endpoints</li>
+                    <li><strong>Response Times:</strong> Monitor application response times</li>
+                    <li><strong>Error Rates:</strong> Track application error rates</li>
+                </ul>
+
+                <h3>Availability Monitoring</h3>
+                <ul>
+                    <li><strong>Uptime Tracking:</strong> Monitor container uptime</li>
+                    <li><strong>Restart Monitoring:</strong> Track container restarts</li>
+                    <li><strong>Failure Detection:</strong> Detect and alert on container failures</li>
+                    <li><strong>Recovery Monitoring:</strong> Monitor automatic recovery processes</li>
+                </ul>
+
+                <h2>Multi-host Monitoring</h2>
+                <p>Monitor containers across multiple Docker hosts:</p>
+
+                <h3>Host Management</h3>
+                <ul>
+                    <li><strong>Host Overview:</strong> View all monitored hosts</li>
+                    <li><strong>Host Status:</strong> Monitor host connectivity and health</li>
+                    <li><strong>Container Distribution:</strong> View container distribution across hosts</li>
+                    <li><strong>Host Metrics:</strong> Monitor host-level metrics</li>
+                </ul>
+
+                <h3>Cross-host Monitoring</h3>
+                <ul>
+                    <li><strong>Global Container View:</strong> View all containers across all hosts</li>
+                    <li><strong>Cross-host Alerts:</strong> Alerts that span multiple hosts</li>
+                    <li><strong>Load Distribution:</strong> Monitor load distribution across hosts</li>
+                    <li><strong>Network Connectivity:</strong> Monitor inter-host communication</li>
+                </ul>
+
+                <h2>Custom Monitoring</h2>
+                <p>Set up custom monitoring for your specific needs:</p>
+
+                <h3>Custom Metrics</h3>
+                <ul>
+                    <li><strong>Application Metrics:</strong> Monitor application-specific metrics</li>
+                    <li><strong>Business Metrics:</strong> Track business-related metrics</li>
+                    <li><strong>Custom Alerts:</strong> Set up custom alert conditions</li>
+                    <li><strong>Metric Aggregation:</strong> Aggregate metrics across containers</li>
+                </ul>
+
+                <h3>Monitoring Rules</h3>
+                <ul>
+                    <li><strong>Container Groups:</strong> Group containers for monitoring</li>
+                    <li><strong>Monitoring Policies:</strong> Define monitoring policies</li>
+                    <li><strong>Exclusion Rules:</strong> Exclude containers from monitoring</li>
+                    <li><strong>Custom Dashboards:</strong> Create custom monitoring dashboards</li>
+                </ul>
+
+                <h2>Best Practices</h2>
+                <p>Follow these best practices for effective container monitoring:</p>
+
+                <h3>Monitoring Strategy</h3>
+                <ul>
+                    <li><strong>Set Baselines:</strong> Establish performance baselines</li>
+                    <li><strong>Monitor Trends:</strong> Track performance trends over time</li>
+                    <li><strong>Alert Appropriately:</strong> Set meaningful alert thresholds</li>
+                    <li><strong>Regular Reviews:</strong> Regularly review monitoring data</li>
+                </ul>
+
+                <h3>Performance Optimization</h3>
+                <ul>
+                    <li><strong>Resource Planning:</strong> Plan resource allocation based on monitoring data</li>
+                    <li><strong>Capacity Planning:</strong> Use monitoring data for capacity planning</li>
+                    <li><strong>Optimization Cycles:</strong> Regular optimization based on monitoring insights</li>
+                    <li><strong>Documentation:</strong> Document monitoring configurations and findings</li>
+                </ul>
+
+                <h2>API Integration</h2>
+                <p>Integrate monitoring data with external systems:</p>
+
+                <h3>API Endpoints</h3>
+                <ul>
+                    <li><strong>Container Metrics:</strong> <code>GET /api/v1/metrics/containers/{id}</code></li>
+                    <li><strong>Container List:</strong> <code>GET /api/v1/containers</code></li>
+                    <li><strong>Container Details:</strong> <code>GET /api/v1/containers/{id}</code></li>
+                    <li><strong>System Metrics:</strong> <code>GET /api/v1/metrics/system</code></li>
+                </ul>
+
+                <h3>Integration Examples</h3>
+                <ul>
+                    <li><strong>Grafana Dashboards:</strong> Create custom Grafana dashboards</li>
+                    <li><strong>CI/CD Pipelines:</strong> Integrate with CI/CD systems</li>
+                    <li><strong>External Monitoring:</strong> Integrate with external monitoring tools</li>
+                    <li><strong>Custom Applications:</strong> Build custom monitoring applications</li>
+                </ul>
+
+                <h2>Next Steps</h2>
+                <p>Now that you understand container monitoring, explore these related topics:</p>
+
+                <ul>
+                    <li><a href="alerts.html">Set up alerting</a> for monitoring events</li>
+                    <li><a href="metrics.html">Learn about metrics and analytics</a></li>
+                    <li><a href="logs.html">Manage container logs</a></li>
+                    <li><a href="api.html">Integrate with external systems</a></li>
+                    <li><a href="best-practices.html">Follow monitoring best practices</a></li>
+                </ul>
+
+                <div class="docs-alert info">
+                    <strong>Need Help?</strong> If you need assistance with monitoring setup, check our <a href="troubleshooting.html">Troubleshooting Guide</a> or <a href="faq.html">FAQ</a>.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../assets/logo.svg" alt="DockScope" class="logo" />
+                        <span class="logo-text">DockScope</span>
+                    </div>
+                    <p>Lightweight, agent-based Docker container monitoring and alerting system.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/GovindSingh9447/DockScope" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="installation.html">Installation</a></li>
+                        <li><a href="quickstart.html">Quick Start</a></li>
+                        <li><a href="api.html">API Reference</a></li>
+                        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 DockScope. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html> 

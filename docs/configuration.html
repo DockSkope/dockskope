@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Configuration - DockScope Documentation</title>
+    <link
+      rel="stylesheet"
+      href="../styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="docs.css"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../assets/favicon.svg"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/favicon.png"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../assets/favicon.ico"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="../assets/logo.svg"
+            alt="DockScope"
+            class="logo"
+          />
+          <span class="logo-text">DockScope</span>
+        </div>
+        <div
+          class="nav-menu"
+          id="nav-menu"
+        >
+          <a
+            href="../index.html"
+            class="nav-link"
+            >Home</a
+          >
+          <a
+            href="../index.html#features"
+            class="nav-link"
+            >Features</a
+          >
+          <a
+            href="https://github.com/GovindSingh9447/DockScope"
+            target="_blank"
+            class="nav-link"
+            >GitHub</a
+          >
+          <a
+            href="index.html"
+            class="nav-link active"
+            >Documentation</a
+          >
+          <a
+            href="../index.html#contact"
+            class="nav-link"
+            >Contact</a
+          >
+        </div>
+        <div class="nav-buttons">
+          <a
+            href="../demo.html"
+            class="btn btn-secondary"
+            >Try Demo</a
+          >
+          <a
+            href="../index.html#get-started"
+            class="btn btn-primary"
+            >Get Started Free</a
+          >
+        </div>
+        <div
+          class="nav-toggle"
+          id="nav-toggle"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Documentation Content -->
+    <section class="docs-content">
+      <div class="docs-sidebar">
+        <div class="docs-nav">
+          <h3>Getting Started</h3>
+          <ul>
+            <li>
+              <a href="installation.html"
+                ><i class="fas fa-download"></i> Installation</a
+              >
+            </li>
+            <li>
+              <a href="quickstart.html"
+                ><i class="fas fa-rocket"></i> Quick Start</a
+              >
+            </li>
+            <li>
+              <a
+                href="configuration.html"
+                class="active"
+                ><i class="fas fa-cog"></i> Configuration</a
+              >
+            </li>
+          </ul>
+
+          <h3>Core Features</h3>
+          <ul>
+            <li>
+              <a href="monitoring.html"
+                ><i class="fas fa-chart-line"></i> Container Monitoring</a
+              >
+            </li>
+            <li>
+              <a href="alerts.html"
+                ><i class="fas fa-bell"></i> Alerting System</a
+              >
+            </li>
+            <li>
+              <a href="metrics.html"
+                ><i class="fas fa-tachometer-alt"></i> Metrics & Analytics</a
+              >
+            </li>
+            <li>
+              <a href="logs.html"
+                ><i class="fas fa-file-alt"></i> Log Management</a
+              >
+            </li>
+          </ul>
+
+          <h3>Advanced Topics</h3>
+          <ul>
+            <li>
+              <a href="api.html"><i class="fas fa-code"></i> API Reference</a>
+            </li>
+            <li>
+              <a href="deployment.html"
+                ><i class="fas fa-server"></i> Production Deployment</a
+              >
+            </li>
+            <li>
+              <a href="security.html"
+                ><i class="fas fa-shield-alt"></i> Security</a
+              >
+            </li>
+            <li>
+              <a href="troubleshooting.html"
+                ><i class="fas fa-wrench"></i> Troubleshooting</a
+              >
+            </li>
+          </ul>
+
+          <h3>Guides</h3>
+          <ul>
+            <li>
+              <a href="best-practices.html"
+                ><i class="fas fa-star"></i> Best Practices</a
+              >
+            </li>
+            <li>
+              <a href="examples.html"
+                ><i class="fas fa-lightbulb"></i> Examples</a
+              >
+            </li>
+            <li>
+              <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="docs-main">
+        <div class="docs-welcome">
+          <h1>Configuration Guide</h1>
+          <p>
+            Learn how to configure DockScope for your specific environment and
+            requirements. This guide covers all configuration options and
+            settings.
+          </p>
+
+          <div class="docs-alert info">
+            <strong>Note:</strong> Most configuration changes require restarting
+            the DockScope services to take effect.
+          </div>
+
+          <h2>Environment Variables</h2>
+          <p>
+            DockScope uses environment variables for configuration. You can set
+            these in your <code>.env</code> file or directly in your Docker
+            Compose configuration.
+          </p>
+
+          <h3>Core Configuration</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Description</th>
+                <th>Default</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>DOCKER_HOST</code></td>
+                <td>Docker daemon socket path</td>
+                <td><code>unix:///var/run/docker.sock</code></td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>BACKEND_PORT</code></td>
+                <td>Backend server port</td>
+                <td><code>8080</code></td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>FRONTEND_PORT</code></td>
+                <td>Frontend server port</td>
+                <td><code>3000</code></td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>AGENT_PORT</code></td>
+                <td>Agent communication port</td>
+                <td><code>9090</code></td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>JWT_SECRET</code></td>
+                <td>JWT token secret key</td>
+                <td><code>your-secret-key</code></td>
+                <td>Yes</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Database Configuration</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Description</th>
+                <th>Default</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>INFLUXDB_URL</code></td>
+                <td>InfluxDB connection URL</td>
+                <td><code>http://localhost:8086</code></td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>INFLUXDB_TOKEN</code></td>
+                <td>InfluxDB authentication token</td>
+                <td><code>your-token</code></td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>INFLUXDB_ORG</code></td>
+                <td>InfluxDB organization</td>
+                <td><code>dockscope</code></td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>INFLUXDB_BUCKET</code></td>
+                <td>InfluxDB bucket name</td>
+                <td><code>dockscope_metrics</code></td>
+                <td>No</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Email Configuration</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Variable</th>
+                <th>Description</th>
+                <th>Default</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>SMTP_HOST</code></td>
+                <td>SMTP server hostname</td>
+                <td><code>localhost</code></td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>SMTP_PORT</code></td>
+                <td>SMTP server port</td>
+                <td><code>587</code></td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>SMTP_USERNAME</code></td>
+                <td>SMTP username</td>
+                <td><code></code></td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>SMTP_PASSWORD</code></td>
+                <td>SMTP password</td>
+                <td><code></code></td>
+                <td>No</td>
+              </tr>
+              <tr>
+                <td><code>SMTP_FROM_EMAIL</code></td>
+                <td>From email address for notifications</td>
+                <td><code>noreply@dockscope.com</code></td>
+                <td>No</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Configuration Files</h2>
+          <p>
+            In addition to environment variables, DockScope uses configuration
+            files for more complex settings.
+          </p>
+
+          <h3>Agent Configuration</h3>
+          <p>
+            The agent configuration file is located at
+            <code>agent/config.yaml</code>:
+          </p>
+
+          <pre><code># Agent Configuration
+agent:
+  name: "default-agent"
+  host: "localhost"
+  port: 9090
+  
+# Metrics Collection
+metrics:
+  collection_interval: 30s
+  retention_days: 30
+  
+# Docker Configuration
+docker:
+  socket_path: "/var/run/docker.sock"
+  api_version: "1.41"
+  
+# Logging
+logging:
+  level: "info"
+  format: "json"
+  output: "stdout"</code></pre>
+
+          <h3>Backend Configuration</h3>
+          <p>
+            The backend configuration file is located at
+            <code>backend/config.yaml</code>:
+          </p>
+
+          <pre><code># Server Configuration
+server:
+  host: "0.0.0.0"
+  port: 8080
+  read_timeout: 30s
+  write_timeout: 30s
+  
+# Database Configuration
+database:
+  type: "influxdb"
+  url: "http://localhost:8086"
+  token: "${INFLUXDB_TOKEN}"
+  org: "${INFLUXDB_ORG}"
+  bucket: "${INFLUXDB_BUCKET}"
+  
+# Authentication
+auth:
+  jwt_secret: "${JWT_SECRET}"
+  token_expiry: 24h
+  
+# Alerting
+alerts:
+  check_interval: 30s
+  notification_timeout: 10s</code></pre>
+
+          <h2>Web Interface Configuration</h2>
+          <p>Configure the web interface through the settings panel:</p>
+
+          <h3>General Settings</h3>
+          <ul>
+            <li><strong>Theme:</strong> Light/Dark mode</li>
+            <li><strong>Language:</strong> Interface language</li>
+            <li><strong>Time Zone:</strong> Display timezone</li>
+            <li><strong>Refresh Interval:</strong> Auto-refresh frequency</li>
+          </ul>
+
+          <h3>Dashboard Configuration</h3>
+          <ul>
+            <li>
+              <strong>Default Dashboard:</strong> Choose which dashboard to show
+              on login
+            </li>
+            <li>
+              <strong>Widget Layout:</strong> Customize dashboard widget
+              positions
+            </li>
+            <li>
+              <strong>Metrics Display:</strong> Configure which metrics to show
+              by default
+            </li>
+          </ul>
+
+          <h2>Security Configuration</h2>
+          <p>Configure security settings for your DockScope installation:</p>
+
+          <h3>Authentication</h3>
+          <ul>
+            <li>
+              <strong>Password Policy:</strong> Minimum password requirements
+            </li>
+            <li>
+              <strong>Session Timeout:</strong> Automatic logout after
+              inactivity
+            </li>
+            <li>
+              <strong>Multi-factor Authentication:</strong> Enable 2FA for users
+            </li>
+          </ul>
+
+          <h3>Network Security</h3>
+          <ul>
+            <li><strong>HTTPS:</strong> Enable SSL/TLS encryption</li>
+            <li><strong>Firewall Rules:</strong> Configure network access</li>
+            <li>
+              <strong>IP Whitelisting:</strong> Restrict access to specific IPs
+            </li>
+          </ul>
+
+          <h2>Performance Configuration</h2>
+          <p>Optimize DockScope performance for your environment:</p>
+
+          <h3>Resource Limits</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>CPU Limit</th>
+                <th>Memory Limit</th>
+                <th>Storage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Backend</td>
+                <td>1 CPU</td>
+                <td>512MB</td>
+                <td>1GB</td>
+              </tr>
+              <tr>
+                <td>Frontend</td>
+                <td>0.5 CPU</td>
+                <td>256MB</td>
+                <td>100MB</td>
+              </tr>
+              <tr>
+                <td>Agent</td>
+                <td>0.5 CPU</td>
+                <td>256MB</td>
+                <td>50MB</td>
+              </tr>
+              <tr>
+                <td>InfluxDB</td>
+                <td>1 CPU</td>
+                <td>1GB</td>
+                <td>10GB</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Metrics Collection</h3>
+          <ul>
+            <li>
+              <strong>Collection Interval:</strong> How often to collect metrics
+              (default: 30s)
+            </li>
+            <li>
+              <strong>Retention Policy:</strong> How long to keep historical
+              data (default: 30 days)
+            </li>
+            <li>
+              <strong>Data Compression:</strong> Enable/disable data compression
+            </li>
+          </ul>
+
+          <h2>Monitoring Configuration</h2>
+          <p>Configure what and how to monitor:</p>
+
+          <h3>Container Monitoring</h3>
+          <ul>
+            <li>
+              <strong>Auto-discovery:</strong> Automatically monitor new
+              containers
+            </li>
+            <li><strong>Excluded Containers:</strong> Containers to ignore</li>
+            <li>
+              <strong>Custom Labels:</strong> Add custom labels for organization
+            </li>
+          </ul>
+
+          <h3>Metrics to Collect</h3>
+          <ul>
+            <li><strong>CPU Usage:</strong> Enable/disable CPU monitoring</li>
+            <li>
+              <strong>Memory Usage:</strong> Enable/disable memory monitoring
+            </li>
+            <li>
+              <strong>Network I/O:</strong> Enable/disable network monitoring
+            </li>
+            <li><strong>Disk I/O:</strong> Enable/disable disk monitoring</li>
+            <li>
+              <strong>Custom Metrics:</strong> Define custom metrics to collect
+            </li>
+          </ul>
+
+          <h2>Alerting Configuration</h2>
+          <p>Configure alerting rules and notifications:</p>
+
+          <h3>Default Alert Rules</h3>
+          <ul>
+            <li>
+              <strong>High CPU Usage:</strong> Alert when CPU > 80% for 5
+              minutes
+            </li>
+            <li>
+              <strong>High Memory Usage:</strong> Alert when memory > 90% for 5
+              minutes
+            </li>
+            <li>
+              <strong>Container Down:</strong> Alert when container stops
+              unexpectedly
+            </li>
+            <li><strong>Disk Space:</strong> Alert when disk usage > 85%</li>
+          </ul>
+
+          <h3>Notification Channels</h3>
+          <ul>
+            <li><strong>Email:</strong> Configure SMTP settings</li>
+            <li><strong>Slack:</strong> Webhook URL for Slack notifications</li>
+            <li><strong>Webhook:</strong> Custom HTTP endpoints</li>
+            <li><strong>PagerDuty:</strong> PagerDuty integration</li>
+          </ul>
+
+          <h2>Backup and Recovery</h2>
+          <p>Configure backup settings for your DockScope data:</p>
+
+          <h3>Automatic Backups</h3>
+          <ul>
+            <li>
+              <strong>Backup Schedule:</strong> Daily/weekly/monthly backups
+            </li>
+            <li><strong>Backup Location:</strong> Local or remote storage</li>
+            <li><strong>Retention:</strong> How long to keep backups</li>
+            <li><strong>Encryption:</strong> Encrypt backup files</li>
+          </ul>
+
+          <h3>Manual Backup</h3>
+          <pre><code># Create a backup
+docker-compose -f docker-compose.production.yml exec backend ./backup.sh
+
+# Restore from backup
+docker-compose -f docker-compose.production.yml exec backend ./restore.sh backup_file.tar.gz</code></pre>
+
+          <h2>Configuration Examples</h2>
+          <p>Here are some common configuration scenarios:</p>
+
+          <h3>Development Environment</h3>
+          <pre><code># .env file for development
+DOCKER_HOST=unix:///var/run/docker.sock
+BACKEND_PORT=8080
+FRONTEND_PORT=3000
+JWT_SECRET=dev-secret-key
+INFLUXDB_URL=http://localhost:8086
+SMTP_HOST=localhost
+SMTP_PORT=1025</code></pre>
+
+          <h3>Production Environment</h3>
+          <pre><code># .env file for production
+DOCKER_HOST=unix:///var/run/docker.sock
+BACKEND_PORT=8080
+FRONTEND_PORT=3000
+JWT_SECRET=your-super-secure-jwt-secret-key
+INFLUXDB_URL=http://influxdb:8086
+INFLUXDB_TOKEN=your-influxdb-token
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USERNAME=your-email@gmail.com
+SMTP_PASSWORD=your-app-password
+SMTP_FROM_EMAIL=noreply@yourcompany.com</code></pre>
+
+          <h3>Multi-Host Setup</h3>
+          <pre><code># Agent configuration for remote host
+agent:
+  name: "remote-host-1"
+  host: "192.168.1.100"
+  port: 9090
+  
+docker:
+  socket_path: "/var/run/docker.sock"
+  
+metrics:
+  collection_interval: 30s
+  retention_days: 30</code></pre>
+
+          <h2>Configuration Validation</h2>
+          <p>Validate your configuration before applying changes:</p>
+
+          <pre><code># Validate configuration
+docker-compose -f docker-compose.production.yml config
+
+# Test configuration
+docker-compose -f docker-compose.production.yml exec backend ./validate-config.sh</code></pre>
+
+          <div class="docs-alert warning">
+            <strong>Important:</strong> Always backup your configuration before
+            making changes, especially in production environments.
+          </div>
+
+          <h2>Next Steps</h2>
+          <p>After configuring DockScope, consider these next steps:</p>
+
+          <ul>
+            <li>
+              <a href="monitoring.html">Learn about monitoring features</a>
+            </li>
+            <li><a href="alerts.html">Set up comprehensive alerting</a></li>
+            <li><a href="security.html">Configure security settings</a></li>
+            <li><a href="deployment.html">Deploy to production</a></li>
+            <li><a href="best-practices.html">Follow best practices</a></li>
+          </ul>
+
+          <div class="docs-alert info">
+            <strong>Need Help?</strong> If you need assistance with
+            configuration, check our
+            <a href="troubleshooting.html">Troubleshooting Guide</a> or
+            <a href="faq.html">FAQ</a>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="../assets/logo.svg"
+                alt="DockScope"
+                class="logo"
+              />
+              <span class="logo-text">DockScope</span>
+            </div>
+            <p>
+              Lightweight, agent-based Docker container monitoring and alerting
+              system.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://github.com/GovindSingh9447/DockScope"
+                target="_blank"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h4>Documentation</h4>
+            <ul>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="quickstart.html">Quick Start</a></li>
+              <li><a href="api.html">API Reference</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+              <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 DockScope. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

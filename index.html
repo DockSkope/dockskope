@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DockScope - Docker Monitoring Made Simple</title>
+    <meta
+      name="description"
+      content="Lightweight, agent-based Docker container monitoring and alerting system. Monitor your containers in real-time with beautiful dashboards."
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img src="assets/logo.svg" alt="DockScope" class="logo" />
+          <span class="logo-text">DockScope</span>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#features" class="nav-link">Features</a>
+          <a href="https://github.com/GovindSingh9447/DockScope" class="nav-link" target="_blank">GitHub</a>
+          <a href="docs/index.html" class="nav-link">Documentation</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-buttons">
+          <a href="demo.html" class="btn btn-secondary">Try Demo</a>
+          <a href="#get-started" class="btn btn-primary">Get Started Free</a>
+        </div>
+        <div class="nav-toggle" id="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-background">
+        <div class="hero-bg-shapes">
+          <div class="shape shape-1"></div>
+          <div class="shape shape-2"></div>
+          <div class="shape shape-3"></div>
+          <div class="shape shape-4"></div>
+          <div class="shape shape-5"></div>
+        </div>
+      </div>
+      
+      <div class="container">
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <i class="fas fa-star"></i>
+              Open Source & Free Forever
+            </div>
+            
+            <h1 class="hero-title">
+              Monitor Your Docker <span class="gradient-text">Infrastructure</span><br>
+              Like Never Before
+            </h1>
+            
+            <p class="hero-subtitle">
+              DockScope provides real-time monitoring, intelligent alerting, and beautiful dashboards for your Docker containers. 
+              Deploy lightweight agents on each host and monitor everything from a central dashboard.
+            </p>
+            
+            <div class="hero-buttons">
+              <a href="#get-started" class="btn btn-primary btn-large">
+                <i class="fas fa-rocket"></i>
+                Start Monitoring Free
+              </a>
+              <a href="demo.html" class="btn btn-secondary btn-large">
+                <i class="fas fa-play"></i>
+                Live Demo
+              </a>
+              <a href="https://github.com/GovindSingh9447/DockScope" class="btn btn-ghost btn-large" target="_blank">
+                <i class="fab fa-github"></i>
+                View on GitHub
+              </a>
+            </div>
+            
+            <div class="hero-stats">
+              <div class="stat">
+                <div class="stat-icon">
+                  <i class="fas fa-download"></i>
+                </div>
+                <div class="stat-content">
+                  <div class="stat-number">5min</div>
+                  <div class="stat-label">Setup Time</div>
+                </div>
+              </div>
+              <div class="stat">
+                <div class="stat-icon">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="stat-content">
+                  <div class="stat-number">100%</div>
+                  <div class="stat-label">Open Source</div>
+                </div>
+              </div>
+              <div class="stat">
+                <div class="stat-icon">
+                  <i class="fas fa-server"></i>
+                </div>
+                <div class="stat-content">
+                  <div class="stat-number">∞</div>
+                  <div class="stat-label">Containers</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hero-image">
+            <div class="dashboard-mockup">
+              <div class="mockup-header">
+                <div class="mockup-controls">
+                  <div class="control control-close"></div>
+                  <div class="control control-minimize"></div>
+                  <div class="control control-maximize"></div>
+                </div>
+                <div class="mockup-title">DockScope Dashboard</div>
+              </div>
+              <div class="mockup-content">
+                <div class="mockup-sidebar">
+                  <div class="sidebar-item active" data-tab="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                  </div>
+                  <div class="sidebar-item" data-tab="containers">
+                    <i class="fas fa-cube"></i>
+                    Containers
+                  </div>
+                  <div class="sidebar-item" data-tab="metrics">
+                    <i class="fas fa-chart-line"></i>
+                    Metrics
+                  </div>
+                  <div class="sidebar-item" data-tab="alerts">
+                    <i class="fas fa-bell"></i>
+                    Alerts
+                  </div>
+                </div>
+                <div class="mockup-main">
+                  <div class="mockup-tab active" id="dashboard">
+                    <div class="mockup-header-bar">
+                      <h3>System Overview</h3>
+                      <div class="mockup-actions">
+                        <i class="fas fa-refresh"></i>
+                        <i class="fas fa-cog"></i>
+                      </div>
+                    </div>
+                    <div class="mockup-metrics">
+                      <div class="metric-tile">
+                        <div class="metric-info">
+                          <div class="metric-label">CPU Usage</div>
+                          <div class="metric-value">24.5%</div>
+                        </div>
+                        <div class="metric-progress">
+                          <div class="progress-bar" style="width: 24.5%"></div>
+                        </div>
+                      </div>
+                      <div class="metric-tile">
+                        <div class="metric-info">
+                          <div class="metric-label">Memory</div>
+                          <div class="metric-value">1.2GB</div>
+                        </div>
+                        <div class="metric-progress">
+                          <div class="progress-bar" style="width: 35%"></div>
+                        </div>
+                      </div>
+                      <div class="metric-tile">
+                        <div class="metric-info">
+                          <div class="metric-label">Active Containers</div>
+                          <div class="metric-value">8</div>
+                        </div>
+                        <div class="metric-progress">
+                          <div class="progress-bar" style="width: 80%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent Architecture Section -->
+    <section class="agent-architecture">
+      <div class="container">
+        <div class="section-header">
+          <h2>Agent-Based Architecture</h2>
+          <p>Lightweight agents collect data from each host while the central server provides a unified view</p>
+        </div>
+        
+        <div class="architecture-grid">
+          <div class="architecture-card">
+            <div class="architecture-icon">
+              <i class="fas fa-desktop"></i>
+            </div>
+            <h3>DockScope Agent</h3>
+            <p>Lightweight agent that runs on each Docker host, collecting metrics and container information in real-time.</p>
+            <div class="architecture-features">
+              <span><i class="fas fa-check"></i> Minimal resource usage</span>
+              <span><i class="fas fa-check"></i> Automatic discovery</span>
+              <span><i class="fas fa-check"></i> Secure communication</span>
+            </div>
+          </div>
+          
+          <div class="architecture-card">
+            <div class="architecture-icon">
+              <i class="fas fa-server"></i>
+            </div>
+            <h3>Central Backend</h3>
+            <p>Powerful backend server that aggregates data from all agents, processes alerts, and serves the web interface.</p>
+            <div class="architecture-features">
+              <span><i class="fas fa-check"></i> Data aggregation</span>
+              <span><i class="fas fa-check"></i> Alert processing</span>
+              <span><i class="fas fa-check"></i> RESTful API</span>
+            </div>
+          </div>
+          
+          <div class="architecture-card">
+            <div class="architecture-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h3>Web Dashboard</h3>
+            <p>Modern, responsive web interface for visualizing data, managing containers, and configuring alerts.</p>
+            <div class="architecture-features">
+              <span><i class="fas fa-check"></i> Real-time updates</span>
+              <span><i class="fas fa-check"></i> Mobile responsive</span>
+              <span><i class="fas fa-check"></i> Beautiful UI</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="deployment-steps">
+          <h3>Quick Deployment</h3>
+          <div class="steps-grid">
+            <div class="step">
+              <div class="step-number">1</div>
+              <h4>Install Agent</h4>
+              <p>Deploy lightweight agents on your Docker hosts</p>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <h4>Start Backend</h4>
+              <p>Launch the central monitoring server</p>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <h4>Access Dashboard</h4>
+              <p>Open the web interface and start monitoring</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Powerful Features</h2>
+          <p>Everything you need to monitor and manage your Docker infrastructure</p>
+        </div>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Real-time Monitoring</h3>
+            <p>Monitor CPU, memory, disk, and network usage in real-time with beautiful charts and graphs.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-bell"></i>
+            </div>
+            <h3>Intelligent Alerting</h3>
+            <p>Set up custom alert rules with email notifications to stay informed about your infrastructure.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-cube"></i>
+            </div>
+            <h3>Container Management</h3>
+            <p>Start, stop, restart, and manage containers directly from the web interface.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <h3>Log Aggregation</h3>
+            <p>Centralized log viewing and search capabilities across all your containers.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-server"></i>
+            </div>
+            <h3>Multi-host Support</h3>
+            <p>Monitor containers across multiple Docker hosts from a single dashboard.</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>RESTful API</h3>
+            <p>Integrate DockScope with your existing tools and workflows using our comprehensive API.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get Started Section -->
+    <section class="get-started" id="get-started">
+      <div class="container">
+        <div class="section-header">
+          <h2>Get Started Today</h2>
+          <p>Join thousands of developers who trust DockScope for their Docker monitoring needs</p>
+        </div>
+        
+        <div class="get-started-grid">
+          <div class="get-started-card">
+            <div class="card-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3>Quick Start</h3>
+            <p>Get up and running in minutes with our simple installation guide.</p>
+            <a href="docs/quickstart.html" class="btn btn-primary">Quick Start Guide</a>
+          </div>
+          
+          <div class="get-started-card">
+            <div class="card-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>Documentation</h3>
+            <p>Comprehensive documentation covering installation, configuration, and advanced features.</p>
+            <a href="docs/index.html" class="btn btn-secondary">View Documentation</a>
+          </div>
+          
+          <div class="get-started-card">
+            <div class="card-icon">
+              <i class="fas fa-play"></i>
+            </div>
+            <h3>Live Demo</h3>
+            <p>Experience DockScope in action with our interactive demo.</p>
+            <a href="demo.html" class="btn btn-outline">Try Demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img src="assets/logo.svg" alt="DockScope" class="logo" />
+              <span class="logo-text">DockScope</span>
+            </div>
+            <p>
+              Lightweight, agent-based Docker container monitoring and alerting system.
+            </p>
+            <div class="social-links">
+              <a href="https://github.com/GovindSingh9447/DockScope" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h4>Documentation</h4>
+            <ul>
+              <li><a href="docs/installation.html">Installation</a></li>
+              <li><a href="docs/quickstart.html">Quick Start</a></li>
+              <li><a href="docs/api.html">API Reference</a></li>
+              <li><a href="docs/faq.html">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="docs/faq.html">FAQ</a></li>
+              <li><a href="https://github.com/GovindSingh9447/DockScope/issues" target="_blank">Issues</a></li>
+              <li><a href="https://github.com/GovindSingh9447/DockScope" target="_blank">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 DockScope. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Quick Start - DockScope Documentation</title>
+    <link
+      rel="stylesheet"
+      href="../styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="docs.css"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../assets/favicon.svg"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/favicon.png"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../assets/favicon.ico"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="../assets/logo.svg"
+            alt="DockScope"
+            class="logo"
+          />
+          <span class="logo-text">DockScope</span>
+        </div>
+        <div
+          class="nav-menu"
+          id="nav-menu"
+        >
+          <a
+            href="../index.html"
+            class="nav-link"
+            >Home</a
+          >
+          <a
+            href="../index.html#features"
+            class="nav-link"
+            >Features</a
+          >
+          <a
+            href="https://github.com/GovindSingh9447/DockScope"
+            target="_blank"
+            class="nav-link"
+            >GitHub</a
+          >
+          <a
+            href="index.html"
+            class="nav-link active"
+            >Documentation</a
+          >
+          <a
+            href="../index.html#contact"
+            class="nav-link"
+            >Contact</a
+          >
+        </div>
+        <div class="nav-buttons">
+          <a
+            href="../demo.html"
+            class="btn btn-secondary"
+            >Try Demo</a
+          >
+          <a
+            href="../index.html#get-started"
+            class="btn btn-primary"
+            >Get Started Free</a
+          >
+        </div>
+        <div
+          class="nav-toggle"
+          id="nav-toggle"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Documentation Content -->
+    <section class="docs-content">
+      <div class="docs-sidebar">
+        <div class="docs-nav">
+          <h3>Getting Started</h3>
+          <ul>
+            <li>
+              <a href="installation.html"
+                ><i class="fas fa-download"></i> Installation</a
+              >
+            </li>
+            <li>
+              <a
+                href="quickstart.html"
+                class="active"
+                ><i class="fas fa-rocket"></i> Quick Start</a
+              >
+            </li>
+            <li>
+              <a href="configuration.html"
+                ><i class="fas fa-cog"></i> Configuration</a
+              >
+            </li>
+          </ul>
+
+          <h3>Core Features</h3>
+          <ul>
+            <li>
+              <a href="monitoring.html"
+                ><i class="fas fa-chart-line"></i> Container Monitoring</a
+              >
+            </li>
+            <li>
+              <a href="alerts.html"
+                ><i class="fas fa-bell"></i> Alerting System</a
+              >
+            </li>
+            <li>
+              <a href="metrics.html"
+                ><i class="fas fa-tachometer-alt"></i> Metrics & Analytics</a
+              >
+            </li>
+            <li>
+              <a href="logs.html"
+                ><i class="fas fa-file-alt"></i> Log Management</a
+              >
+            </li>
+          </ul>
+
+          <h3>Advanced Topics</h3>
+          <ul>
+            <li>
+              <a href="api.html"><i class="fas fa-code"></i> API Reference</a>
+            </li>
+            <li>
+              <a href="deployment.html"
+                ><i class="fas fa-server"></i> Production Deployment</a
+              >
+            </li>
+            <li>
+              <a href="security.html"
+                ><i class="fas fa-shield-alt"></i> Security</a
+              >
+            </li>
+            <li>
+              <a href="troubleshooting.html"
+                ><i class="fas fa-wrench"></i> Troubleshooting</a
+              >
+            </li>
+          </ul>
+
+          <h3>Guides</h3>
+          <ul>
+            <li>
+              <a href="best-practices.html"
+                ><i class="fas fa-star"></i> Best Practices</a
+              >
+            </li>
+            <li>
+              <a href="examples.html"
+                ><i class="fas fa-lightbulb"></i> Examples</a
+              >
+            </li>
+            <li>
+              <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="docs-main">
+        <div class="docs-welcome">
+          <h1>Quick Start Guide</h1>
+          <p>
+            Get up and running with DockScope in under 5 minutes. This guide
+            will walk you through the essential steps to start monitoring your
+            Docker containers.
+          </p>
+
+          <div class="docs-alert success">
+            <strong>Prerequisites:</strong> Make sure you have Docker installed
+            and running on your system.
+          </div>
+
+          <h2>Step 1: Install DockScope</h2>
+          <p>The fastest way to get started is using Docker Compose:</p>
+
+          <pre><code># Clone the repository
+git clone https://github.com/GovindSingh9447/DockScope.git
+cd DockScope
+
+# Start DockScope
+docker-compose -f docker-compose.production.yml up -d</code></pre>
+
+          <p>
+            This will start all DockScope components automatically. Wait a few
+            moments for all services to initialize.
+          </p>
+
+          <h2>Step 2: Access the Web Interface</h2>
+          <p>Open your browser and navigate to:</p>
+          <pre><code>http://localhost:3000</code></pre>
+
+          <p>
+            You should see the DockScope login page. Use the default
+            credentials:
+          </p>
+          <ul>
+            <li><strong>Username:</strong> <code>admin</code></li>
+            <li><strong>Password:</strong> <code>admin</code></li>
+          </ul>
+
+          <div class="docs-alert warning">
+            <strong>Security Note:</strong> Change the default password
+            immediately after your first login.
+          </div>
+
+          <h2>Step 3: Explore the Dashboard</h2>
+          <p>After logging in, you'll see the main dashboard with:</p>
+
+          <div class="docs-features">
+            <ul>
+              <li>
+                <strong>System Overview:</strong> CPU, memory, and disk usage
+              </li>
+              <li>
+                <strong>Container List:</strong> All running containers with
+                their status
+              </li>
+              <li>
+                <strong>Recent Alerts:</strong> Any triggered alert
+                notifications
+              </li>
+              <li>
+                <strong>Quick Actions:</strong> Start, stop, and restart
+                containers
+              </li>
+            </ul>
+          </div>
+
+          <h2>Step 4: Monitor Your First Container</h2>
+          <p>Let's create a test container to see DockScope in action:</p>
+
+          <pre><code># Run a simple test container
+docker run -d --name test-nginx nginx:latest
+
+# Check the container in DockScope
+# Navigate to the Containers section in the web interface</code></pre>
+
+          <p>
+            You should now see your test container in the DockScope interface
+            with real-time metrics.
+          </p>
+
+          <h2>Step 5: Set Up Your First Alert</h2>
+          <p>Create an alert to monitor your container's CPU usage:</p>
+
+          <ol>
+            <li>Go to the <strong>Alerts</strong> section in the sidebar</li>
+            <li>Click <strong>Create New Alert</strong></li>
+            <li>
+              Configure the alert:
+              <ul>
+                <li><strong>Name:</strong> High CPU Usage</li>
+                <li><strong>Metric:</strong> CPU Usage</li>
+                <li><strong>Condition:</strong> Greater than</li>
+                <li><strong>Threshold:</strong> 80%</li>
+                <li><strong>Duration:</strong> 2 minutes</li>
+              </ul>
+            </li>
+            <li>Save the alert rule</li>
+          </ol>
+
+          <h2>Step 6: View Container Logs</h2>
+          <p>Access real-time logs for your containers:</p>
+
+          <ol>
+            <li>Go to the <strong>Containers</strong> section</li>
+            <li>Click on your test container</li>
+            <li>Navigate to the <strong>Logs</strong> tab</li>
+            <li>View real-time log output</li>
+          </ol>
+
+          <h2>Step 7: Explore Advanced Features</h2>
+          <p>
+            Once you're comfortable with the basics, explore these advanced
+            features:
+          </p>
+
+          <div class="docs-grid">
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3>Metrics & Analytics</h3>
+              <p>
+                View historical data and performance trends for your containers.
+              </p>
+              <a
+                href="metrics.html"
+                class="btn btn-outline"
+                >Learn More</a
+              >
+            </div>
+
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-bell"></i>
+              </div>
+              <h3>Alert Management</h3>
+              <p>
+                Set up sophisticated alerting rules and notification channels.
+              </p>
+              <a
+                href="alerts.html"
+                class="btn btn-outline"
+                >Learn More</a
+              >
+            </div>
+
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3>API Integration</h3>
+              <p>Integrate DockScope with your existing tools and workflows.</p>
+              <a
+                href="api.html"
+                class="btn btn-outline"
+                >Learn More</a
+              >
+            </div>
+
+            <div class="docs-card">
+              <div class="docs-card-icon">
+                <i class="fas fa-server"></i>
+              </div>
+              <h3>Production Deployment</h3>
+              <p>
+                Deploy DockScope in a production environment with proper
+                security.
+              </p>
+              <a
+                href="deployment.html"
+                class="btn btn-outline"
+                >Learn More</a
+              >
+            </div>
+          </div>
+
+          <h2>Next Steps</h2>
+          <p>
+            Now that you have DockScope running, here are some recommended next
+            steps:
+          </p>
+
+          <ul>
+            <li>
+              <a href="configuration.html">Configure advanced settings</a> for
+              your environment
+            </li>
+            <li>
+              <a href="monitoring.html">Learn about monitoring features</a> in
+              detail
+            </li>
+            <li>
+              <a href="alerts.html">Set up comprehensive alerting</a> for your
+              containers
+            </li>
+            <li>
+              <a href="best-practices.html">Follow best practices</a> for
+              production use
+            </li>
+            <li>
+              <a href="api.html">Explore the API</a> for custom integrations
+            </li>
+          </ul>
+
+          <div class="docs-alert info">
+            <strong>Need Help?</strong> If you encounter any issues, check our
+            <a href="troubleshooting.html">Troubleshooting Guide</a> or
+            <a href="faq.html">FAQ</a>.
+          </div>
+
+          <h2>Common Commands</h2>
+          <p>Here are some useful commands for managing DockScope:</p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Command</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code
+                    >docker-compose -f docker-compose.production.yml up -d</code
+                  >
+                </td>
+                <td>Start DockScope in the background</td>
+              </tr>
+              <tr>
+                <td>
+                  <code
+                    >docker-compose -f docker-compose.production.yml down</code
+                  >
+                </td>
+                <td>Stop DockScope</td>
+              </tr>
+              <tr>
+                <td>
+                  <code
+                    >docker-compose -f docker-compose.production.yml logs</code
+                  >
+                </td>
+                <td>View DockScope logs</td>
+              </tr>
+              <tr>
+                <td>
+                  <code
+                    >docker-compose -f docker-compose.production.yml
+                    restart</code
+                  >
+                </td>
+                <td>Restart DockScope services</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="docs-alert success">
+            <strong>Congratulations!</strong> You've successfully set up
+            DockScope and are now monitoring your Docker containers. The system
+            will automatically collect metrics and provide insights into your
+            containerized applications.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="../assets/logo.svg"
+                alt="DockScope"
+                class="logo"
+              />
+              <span class="logo-text">DockScope</span>
+            </div>
+            <p>
+              Lightweight, agent-based Docker container monitoring and alerting
+              system.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://github.com/GovindSingh9447/DockScope"
+                target="_blank"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h4>Documentation</h4>
+            <ul>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="quickstart.html">Quick Start</a></li>
+              <li><a href="api.html">API Reference</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+              <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 DockScope. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

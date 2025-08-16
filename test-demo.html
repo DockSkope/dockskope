@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Demo Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .test-item {
+        margin: 20px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+      .metric {
+        font-size: 24px;
+        font-weight: bold;
+        color: #0db7ed;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Demo Test Page</h1>
+
+    <div class="test-item">
+      <h3>Metric Animation Test</h3>
+      <div
+        class="metric"
+        id="test-metric"
+      >
+        0
+      </div>
+      <button onclick="testAnimation()">Test Animation</button>
+    </div>
+
+    <div class="test-item">
+      <h3>Chart Animation Test</h3>
+      <div
+        style="
+          width: 200px;
+          height: 20px;
+          background: #f0f0f0;
+          position: relative;
+        "
+      >
+        <div
+          id="test-chart"
+          style="
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: #0db7ed;
+            width: 0%;
+            transition: width 2s ease;
+          "
+        ></div>
+      </div>
+      <button onclick="testChart()">Test Chart</button>
+    </div>
+
+    <div class="test-item">
+      <h3>Console Log Test</h3>
+      <button onclick="testConsole()">Test Console</button>
+      <p>Check browser console for logs</p>
+    </div>
+
+    <script>
+      function testAnimation() {
+        const element = document.getElementById('test-metric');
+        let current = 0;
+        const target = 100;
+        const increment = target / 50;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          element.textContent = Math.floor(current);
+        }, 50);
+      }
+
+      function testChart() {
+        const chart = document.getElementById('test-chart');
+        chart.style.width = '0%';
+        setTimeout(() => {
+          chart.style.width = '100%';
+        }, 100);
+      }
+
+      function testConsole() {
+        console.log('Test console log working!');
+        console.warn('Test warning message');
+        console.error('Test error message');
+      }
+
+      // Test on page load
+      document.addEventListener('DOMContentLoaded', function () {
+        console.log('Test page loaded successfully!');
+        testConsole();
+      });
+    </script>
+  </body>
+</html>

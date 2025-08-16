@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0db7ed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0066cc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Two stacked server rectangles with dark blue circles -->
+  <g fill="url(#logoGradient)">
+    <!-- Top rectangle -->
+    <rect x="8" y="8" width="24" height="8" rx="2" fill="url(#logoGradient)"/>
+    
+    <!-- Bottom rectangle -->
+    <rect x="8" y="18" width="24" height="8" rx="2" fill="url(#logoGradient)"/>
+    
+    <!-- Dark blue circles inside each rectangle (left side) -->
+    <circle cx="12" cy="12" r="1.5" fill="#0066cc"/>
+    <circle cx="12" cy="22" r="1.5" fill="#0066cc"/>
+  </g>
+</svg> 

@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>DockScope Demo - Live Container Monitoring</title>
+    <meta
+      name="description"
+      content="Experience DockScope in action with live container monitoring demo"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="assets/favicon.svg"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/favicon.png"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/favicon.ico"
+    />
+
+    <!-- Fonts -->
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link
+      rel="stylesheet"
+      href="styles.css"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      .demo-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .demo-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        padding: 3rem 2rem;
+        border-radius: 1rem;
+        color: white;
+        margin-top: 2rem;
+      }
+
+      .demo-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: white;
+      }
+
+      .demo-header p {
+        font-size: 1.125rem;
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .demo-card {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e5e7eb;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .demo-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+      }
+
+      .demo-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .demo-card h3 {
+        margin-bottom: 1.5rem;
+        color: #1e3a8a;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.25rem;
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .metric-item {
+        text-align: center;
+        padding: 1.5rem 1rem;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 0.75rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border: 1px solid #e2e8f0;
+      }
+
+      .metric-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(30, 58, 138, 0.1);
+      }
+
+      .metric-value {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #1e3a8a;
+        margin-bottom: 0.5rem;
+      }
+
+      .metric-label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      .chart-container {
+        height: 200px;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        border-radius: 0.75rem;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+      }
+
+      .chart-line {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        height: 3px;
+        background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+        border-radius: 2px;
+        width: 0%;
+        transition: width 2s ease;
+      }
+
+      .chart-line::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(30, 58, 138, 0.4),
+          transparent
+        );
+        animation: chart-animation 3s infinite;
+      }
+
+      @keyframes chart-animation {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .container-list {
+        max-height: 300px;
+        overflow-y: auto;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.75rem;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      }
+
+      .container-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        transition: background-color 0.2s ease;
+      }
+
+      .container-item:hover {
+        background: rgba(30, 58, 138, 0.05);
+      }
+
+      .container-item:last-child {
+        border-bottom: none;
+      }
+
+      .container-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .container-status {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      .status-running {
+        background: #10b981;
+        box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+      }
+      .status-stopped {
+        background: #ef4444;
+        box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+      }
+      .status-paused {
+        background: #f59e0b;
+        box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+      }
+
+      .container-name {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .container-id {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        font-family: 'Courier New', monospace;
+      }
+
+      .container-metrics {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .alert-list {
+        max-height: 300px;
+        overflow-y: auto;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.75rem;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      }
+
+      .alert-item {
+        padding: 1rem;
+        border-left: 4px solid;
+        margin-bottom: 0.5rem;
+        background: white;
+        border-radius: 0.25rem;
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.5s ease;
+        margin: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .alert-item:last-child {
+        margin-bottom: 0.5rem;
+      }
+
+      .alert-warning {
+        border-color: #f59e0b;
+        background: rgba(245, 158, 11, 0.1);
+      }
+      .alert-error {
+        border-color: #ef4444;
+        background: rgba(239, 68, 68, 0.1);
+      }
+      .alert-info {
+        border-color: #1e3a8a;
+        background: rgba(30, 58, 138, 0.1);
+      }
+
+      .alert-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
+
+      .alert-title {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .alert-time {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+      }
+
+      .alert-message {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        line-height: 1.4;
+      }
+
+      .demo-actions {
+        text-align: center;
+        margin-top: 4rem;
+        padding: 3rem;
+        background: var(--bg-secondary);
+        border-radius: 1rem;
+        border: 1px solid var(--border-color);
+      }
+
+      .demo-actions h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .demo-actions p {
+        font-size: 1.125rem;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero-buttons .btn {
+        min-width: 200px;
+        justify-content: center;
+      }
+
+      /* Mobile Navigation Styles */
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 0.5rem;
+        background: none;
+        border: none;
+        gap: 4px;
+      }
+
+      .nav-toggle span {
+        width: 25px;
+        height: 3px;
+        background: var(--primary-color);
+        transition: 0.3s;
+        border-radius: 2px;
+      }
+
+      .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .demo-container {
+          padding: 1.5rem;
+        }
+
+        .demo-grid {
+          gap: 1.5rem;
+        }
+
+        .demo-card {
+          padding: 1.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .demo-container {
+          padding: 1rem;
+        }
+
+        .demo-header h1 {
+          font-size: 2rem;
+        }
+
+        .demo-header p {
+          font-size: 1rem;
+        }
+
+        .demo-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .demo-card {
+          padding: 1.25rem;
+        }
+
+        .metric-grid {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+        }
+
+        .metric-item {
+          padding: 1rem;
+        }
+
+        .metric-value {
+          font-size: 1.5rem;
+        }
+
+        .container-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+
+        .container-metrics {
+          align-self: flex-end;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .hero-buttons .btn {
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .demo-actions {
+          padding: 2rem 1rem;
+          margin-top: 2rem;
+        }
+
+        .demo-actions h2 {
+          font-size: 1.5rem;
+        }
+
+        .demo-actions p {
+          font-size: 1rem;
+        }
+
+        /* Mobile Navigation */
+        .nav-menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          background: white;
+          padding: 1rem;
+          box-shadow: var(--shadow-lg);
+          border-top: 1px solid var(--border-color);
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-menu.active {
+          display: flex;
+        }
+
+        .nav-buttons {
+          display: none;
+        }
+
+        .nav-toggle {
+          display: flex;
+        }
+
+        .nav-container {
+          position: relative;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .demo-container {
+          padding: 0.75rem;
+        }
+
+        .demo-card {
+          padding: 1rem;
+        }
+
+        .demo-header h1 {
+          font-size: 1.75rem;
+        }
+
+        .demo-actions {
+          padding: 1.5rem 0.75rem;
+        }
+
+        .hero-buttons .btn {
+          padding: 0.875rem 1.5rem;
+          font-size: 0.875rem;
+        }
+      }
+
+      /* Scrollbar Styling */
+      .container-list::-webkit-scrollbar,
+      .alert-list::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .container-list::-webkit-scrollbar-track,
+      .alert-list::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 3px;
+      }
+
+      .container-list::-webkit-scrollbar-thumb,
+      .alert-list::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 3px;
+      }
+
+      .container-list::-webkit-scrollbar-thumb:hover,
+      .alert-list::-webkit-scrollbar-thumb:hover {
+        background: var(--text-light);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="assets/logo.svg"
+            alt="DockScope"
+            class="logo"
+          />
+          <span class="logo-text">DockScope</span>
+        </div>
+
+        <div
+          class="nav-menu"
+          id="nav-menu"
+        >
+          <a
+            href="index.html"
+            class="nav-link"
+            >Home</a
+          >
+          <a
+            href="index.html#features"
+            class="nav-link"
+            >Features</a
+          >
+          <a
+            href="docs/index.html"
+            class="nav-link"
+            >Documentation</a
+          >
+          <a
+            href="index.html#about"
+            class="nav-link"
+            >About</a
+          >
+        </div>
+
+        <div class="nav-buttons">
+          <a
+            href="index.html#get-started"
+            class="btn btn-primary"
+            >Get Started</a
+          >
+        </div>
+
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Toggle navigation menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Demo Header -->
+    <section
+      class="hero"
+      style="padding-top: 6rem"
+    >
+      <div class="demo-container">
+        <div class="demo-header">
+          <h1>DockScope Live Demo</h1>
+          <p>Experience real-time container monitoring in action</p>
+        </div>
+
+        <!-- Demo Grid -->
+        <div class="demo-grid">
+          <!-- System Overview -->
+          <div class="demo-card">
+            <h3><i class="fas fa-server"></i> System Overview</h3>
+            <div class="metric-grid">
+              <div class="metric-item">
+                <div
+                  class="metric-value"
+                  id="total-containers"
+                >
+                  12
+                </div>
+                <div class="metric-label">Total Containers</div>
+              </div>
+              <div class="metric-item">
+                <div
+                  class="metric-value"
+                  id="running-containers"
+                >
+                  8
+                </div>
+                <div class="metric-label">Running</div>
+              </div>
+              <div class="metric-item">
+                <div
+                  class="metric-value"
+                  id="cpu-usage"
+                >
+                  67%
+                </div>
+                <div class="metric-label">CPU Usage</div>
+              </div>
+              <div class="metric-item">
+                <div
+                  class="metric-value"
+                  id="memory-usage"
+                >
+                  82%
+                </div>
+                <div class="metric-label">Memory Usage</div>
+              </div>
+            </div>
+            <div class="chart-container">
+              <div class="chart-line"></div>
+            </div>
+          </div>
+
+          <!-- Recent Alerts -->
+          <div class="demo-card">
+            <h3><i class="fas fa-bell"></i> Recent Alerts</h3>
+            <div class="alert-list">
+              <div class="alert-item alert-warning">
+                <div class="alert-header">
+                  <span class="alert-title">High CPU Usage</span>
+                  <span class="alert-time">2 min ago</span>
+                </div>
+                <div class="alert-message">
+                  Container nginx is using 85% CPU
+                </div>
+              </div>
+              <div class="alert-item alert-error">
+                <div class="alert-header">
+                  <span class="alert-title">Container Stopped</span>
+                  <span class="alert-time">5 min ago</span>
+                </div>
+                <div class="alert-message">
+                  Container redis unexpectedly stopped
+                </div>
+              </div>
+              <div class="alert-item alert-info">
+                <div class="alert-header">
+                  <span class="alert-title">New Container</span>
+                  <span class="alert-time">10 min ago</span>
+                </div>
+                <div class="alert-message">
+                  Container app-v2.1.0 started successfully
+                </div>
+              </div>
+              <div class="alert-item alert-warning">
+                <div class="alert-header">
+                  <span class="alert-title">Memory Warning</span>
+                  <span class="alert-time">15 min ago</span>
+                </div>
+                <div class="alert-message">System memory usage above 80%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Container List -->
+          <div class="demo-card">
+            <h3><i class="fas fa-cube"></i> Active Containers</h3>
+            <div class="container-list">
+              <div class="container-item">
+                <div class="container-info">
+                  <div class="container-status status-running"></div>
+                  <div>
+                    <div class="container-name">nginx</div>
+                    <div class="container-id">abc123def</div>
+                  </div>
+                </div>
+                <div class="container-metrics">
+                  <span>CPU: 15%</span>
+                  <span>Mem: 45MB</span>
+                </div>
+              </div>
+              <div class="container-item">
+                <div class="container-info">
+                  <div class="container-status status-running"></div>
+                  <div>
+                    <div class="container-name">redis</div>
+                    <div class="container-id">def456ghi</div>
+                  </div>
+                </div>
+                <div class="container-metrics">
+                  <span>CPU: 8%</span>
+                  <span>Mem: 120MB</span>
+                </div>
+              </div>
+              <div class="container-item">
+                <div class="container-info">
+                  <div class="container-status status-running"></div>
+                  <div>
+                    <div class="container-name">postgres</div>
+                    <div class="container-id">ghi789jkl</div>
+                  </div>
+                </div>
+                <div class="container-metrics">
+                  <span>CPU: 12%</span>
+                  <span>Mem: 256MB</span>
+                </div>
+              </div>
+              <div class="container-item">
+                <div class="container-info">
+                  <div class="container-status status-stopped"></div>
+                  <div>
+                    <div class="container-name">old-app</div>
+                    <div class="container-id">jkl012mno</div>
+                  </div>
+                </div>
+                <div class="container-metrics">
+                  <span>Stopped</span>
+                </div>
+              </div>
+              <div class="container-item">
+                <div class="container-info">
+                  <div class="container-status status-running"></div>
+                  <div>
+                    <div class="container-name">app-v2.1.0</div>
+                    <div class="container-id">mno345pqr</div>
+                  </div>
+                </div>
+                <div class="container-metrics">
+                  <span>CPU: 25%</span>
+                  <span>Mem: 512MB</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Network Traffic -->
+          <div class="demo-card">
+            <h3><i class="fas fa-network-wired"></i> Network Traffic</h3>
+            <div class="metric-grid">
+              <div class="metric-item">
+                <div class="metric-value">2.4 GB</div>
+                <div class="metric-label">Incoming</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-value">1.8 GB</div>
+                <div class="metric-label">Outgoing</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-value">1,247</div>
+                <div class="metric-label">Requests/min</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-value">45ms</div>
+                <div class="metric-label">Avg Response</div>
+              </div>
+            </div>
+            <div class="chart-container">
+              <div class="chart-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demo Actions -->
+        <div class="demo-actions">
+          <h2>Ready to try DockScope?</h2>
+          <p>
+            This is just a preview. Get the full experience with your own
+            containers. It's completely free and open source.
+          </p>
+          <div class="hero-buttons">
+            <a
+              href="index.html#get-started"
+              class="btn btn-primary btn-large"
+            >
+              <i class="fas fa-rocket"></i>
+              Get Started Free
+            </a>
+            <a
+              href="https://github.com/GovindSingh9447/DockScope"
+              class="btn btn-outline btn-large"
+              target="_blank"
+            >
+              <i class="fab fa-github"></i>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="assets/logo.svg"
+                alt="DockScope"
+                class="logo"
+              />
+              <span class="logo-text">DockScope</span>
+            </div>
+            <p>
+              Lightweight, agent-based Docker container monitoring and alerting
+              system.
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="index.html#features">Features</a></li>
+              <li><a href="demo.html">Demo</a></li>
+              <li><a href="docs/index.html">Documentation</a></li>
+              <li>
+                <a href="https://github.com/GovindSingh9447/DockScope"
+                  >GitHub</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="index.html#about">About</a></li>
+              <li><a href="index.html#blog">Blog</a></li>
+              <li><a href="index.html#careers">Careers</a></li>
+              <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="index.html#help">Help Center</a></li>
+              <li><a href="index.html#status">Status</a></li>
+              <li><a href="index.html#security">Security</a></li>
+              <li><a href="index.html#privacy">Privacy</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 DockScope. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="index.html#terms">Terms of Service</a>
+            <a href="index.html#privacy">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Demo-specific animations and mobile navigation
+      document.addEventListener('DOMContentLoaded', function () {
+        console.log('Demo page loaded, initializing animations...');
+
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (navToggle && navMenu) {
+          navToggle.addEventListener('click', function () {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+          });
+
+          // Close menu when clicking outside
+          document.addEventListener('click', function (event) {
+            if (
+              !navToggle.contains(event.target) &&
+              !navMenu.contains(event.target)
+            ) {
+              navMenu.classList.remove('active');
+              navToggle.classList.remove('active');
+            }
+          });
+        }
+
+        // Animate metrics
+        function animateMetric(elementId, target, suffix = '') {
+          const element = document.getElementById(elementId);
+          if (!element) {
+            console.warn('Element not found:', elementId);
+            return;
+          }
+
+          let current = 0;
+          const increment = target / 50;
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            element.textContent = Math.floor(current) + suffix;
+          }, 50);
+        }
+
+        // Initialize chart animations
+        function initChartAnimations() {
+          const chartLines = document.querySelectorAll('.chart-line');
+          chartLines.forEach((line, index) => {
+            setTimeout(() => {
+              line.style.width = '100%';
+            }, index * 300);
+          });
+        }
+
+        // Start animations when page loads
+        setTimeout(() => {
+          console.log('Starting metric animations...');
+          animateMetric('total-containers', 12);
+          animateMetric('running-containers', 8);
+          animateMetric('cpu-usage', 67, '%');
+          animateMetric('memory-usage', 82, '%');
+          initChartAnimations();
+        }, 1000);
+
+        // Simulate real-time updates
+        setInterval(() => {
+          const cpuElement = document.getElementById('cpu-usage');
+          const memoryElement = document.getElementById('memory-usage');
+
+          if (cpuElement && memoryElement) {
+            const currentCpu = parseInt(cpuElement.textContent);
+            const currentMemory = parseInt(memoryElement.textContent);
+
+            // Add some random variation
+            const newCpu = Math.max(
+              30,
+              Math.min(90, currentCpu + (Math.random() - 0.5) * 10)
+            );
+            const newMemory = Math.max(
+              60,
+              Math.min(95, currentMemory + (Math.random() - 0.5) * 5)
+            );
+
+            cpuElement.textContent = Math.round(newCpu) + '%';
+            memoryElement.textContent = Math.round(newMemory) + '%';
+          }
+        }, 5000);
+
+        // Add alert animations
+        const alertItems = document.querySelectorAll('.alert-item');
+        alertItems.forEach((alert, index) => {
+          setTimeout(() => {
+            alert.style.opacity = '1';
+            alert.style.transform = 'translateX(0)';
+          }, index * 200);
+        });
+
+        // Add hover effects for demo cards
+        const demoCards = document.querySelectorAll('.demo-card');
+        demoCards.forEach((card) => {
+          card.addEventListener('mouseenter', function () {
+            this.style.transform = 'translateY(-4px)';
+            this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.15)';
+          });
+
+          card.addEventListener('mouseleave', function () {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'var(--shadow-lg)';
+          });
+        });
+
+        console.log(
+          'Demo animations and interactions initialized successfully!'
+        );
+      });
+    </script>
+  </body>
+</html>

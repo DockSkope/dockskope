@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Alerting System - DockScope Documentation</title>
+    <link
+      rel="stylesheet"
+      href="../styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="docs.css"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../assets/favicon.svg"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/favicon.png"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../assets/favicon.ico"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="../assets/logo.svg"
+            alt="DockScope"
+            class="logo"
+          />
+          <span class="logo-text">DockScope</span>
+        </div>
+        <div
+          class="nav-menu"
+          id="nav-menu"
+        >
+          <a
+            href="../index.html"
+            class="nav-link"
+            >Home</a
+          >
+          <a
+            href="../index.html#features"
+            class="nav-link"
+            >Features</a
+          >
+          <a
+            href="https://github.com/GovindSingh9447/DockScope"
+            target="_blank"
+            class="nav-link"
+            >GitHub</a
+          >
+          <a
+            href="index.html"
+            class="nav-link active"
+            >Documentation</a
+          >
+          <a
+            href="../index.html#contact"
+            class="nav-link"
+            >Contact</a
+          >
+        </div>
+        <div class="nav-buttons">
+          <a
+            href="../demo.html"
+            class="btn btn-secondary"
+            >Try Demo</a
+          >
+          <a
+            href="../index.html#get-started"
+            class="btn btn-primary"
+            >Get Started Free</a
+          >
+        </div>
+        <div
+          class="nav-toggle"
+          id="nav-toggle"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Documentation Content -->
+    <section class="docs-content">
+      <div class="docs-sidebar">
+        <div class="docs-nav">
+          <h3>Getting Started</h3>
+          <ul>
+            <li>
+              <a href="installation.html"
+                ><i class="fas fa-download"></i> Installation</a
+              >
+            </li>
+            <li>
+              <a href="quickstart.html"
+                ><i class="fas fa-rocket"></i> Quick Start</a
+              >
+            </li>
+            <li>
+              <a href="configuration.html"
+                ><i class="fas fa-cog"></i> Configuration</a
+              >
+            </li>
+          </ul>
+
+          <h3>Core Features</h3>
+          <ul>
+            <li>
+              <a href="monitoring.html"
+                ><i class="fas fa-chart-line"></i> Container Monitoring</a
+              >
+            </li>
+            <li>
+              <a
+                href="alerts.html"
+                class="active"
+                ><i class="fas fa-bell"></i> Alerting System</a
+              >
+            </li>
+            <li>
+              <a href="metrics.html"
+                ><i class="fas fa-tachometer-alt"></i> Metrics & Analytics</a
+              >
+            </li>
+            <li>
+              <a href="logs.html"
+                ><i class="fas fa-file-alt"></i> Log Management</a
+              >
+            </li>
+          </ul>
+
+          <h3>Advanced Topics</h3>
+          <ul>
+            <li>
+              <a href="api.html"><i class="fas fa-code"></i> API Reference</a>
+            </li>
+            <li>
+              <a href="deployment.html"
+                ><i class="fas fa-server"></i> Production Deployment</a
+              >
+            </li>
+            <li>
+              <a href="security.html"
+                ><i class="fas fa-shield-alt"></i> Security</a
+              >
+            </li>
+            <li>
+              <a href="troubleshooting.html"
+                ><i class="fas fa-wrench"></i> Troubleshooting</a
+              >
+            </li>
+          </ul>
+
+          <h3>Guides</h3>
+          <ul>
+            <li>
+              <a href="best-practices.html"
+                ><i class="fas fa-star"></i> Best Practices</a
+              >
+            </li>
+            <li>
+              <a href="examples.html"
+                ><i class="fas fa-lightbulb"></i> Examples</a
+              >
+            </li>
+            <li>
+              <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="docs-main">
+        <div class="docs-welcome">
+          <h1>Alerting System</h1>
+          <p>
+            Learn how to set up and manage intelligent alerts in DockScope to
+            stay informed about your container environment.
+          </p>
+
+          <div class="docs-alert info">
+            <strong>Proactive Monitoring:</strong> DockScope's alerting system
+            helps you identify and respond to issues before they impact your
+            applications.
+          </div>
+
+          <h2>Overview</h2>
+          <p>
+            DockScope's alerting system provides comprehensive monitoring and
+            notification capabilities:
+          </p>
+
+          <div class="docs-features">
+            <ul>
+              <li>
+                <strong>Real-time Alerts:</strong> Instant notifications when
+                conditions are met
+              </li>
+              <li>
+                <strong>Flexible Rules:</strong> Customizable alert conditions
+                and thresholds
+              </li>
+              <li>
+                <strong>Multiple Channels:</strong> Email, webhooks, Slack, and
+                custom integrations
+              </li>
+              <li>
+                <strong>Alert Management:</strong> Acknowledge, resolve, and
+                track alert history
+              </li>
+              <li>
+                <strong>Escalation Policies:</strong> Automatic escalation for
+                critical alerts
+              </li>
+              <li>
+                <strong>Alert Suppression:</strong> Prevent alert spam during
+                maintenance
+              </li>
+            </ul>
+          </div>
+
+          <h2>Alert Rules</h2>
+          <p>Alert rules define when and how alerts are triggered:</p>
+
+          <h3>Rule Components</h3>
+          <ul>
+            <li><strong>Name:</strong> Descriptive name for the alert rule</li>
+            <li>
+              <strong>Description:</strong> Detailed description of what the
+              alert monitors
+            </li>
+            <li>
+              <strong>Metric:</strong> The metric to monitor (CPU, memory, etc.)
+            </li>
+            <li>
+              <strong>Condition:</strong> Comparison operator (>, <, >=, <=, ==,
+              !=)
+            </li>
+            <li>
+              <strong>Threshold:</strong> The value that triggers the alert
+            </li>
+            <li>
+              <strong>Duration:</strong> How long the condition must be true
+            </li>
+            <li><strong>Containers:</strong> Which containers to monitor</li>
+            <li>
+              <strong>Notifications:</strong> How to notify when alert triggers
+            </li>
+          </ul>
+
+          <h3>Supported Metrics</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Description</th>
+                <th>Unit</th>
+                <th>Example Threshold</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>cpu_usage</code></td>
+                <td>CPU utilization percentage</td>
+                <td>%</td>
+                <td>80%</td>
+              </tr>
+              <tr>
+                <td><code>memory_usage</code></td>
+                <td>Memory usage percentage</td>
+                <td>%</td>
+                <td>90%</td>
+              </tr>
+              <tr>
+                <td><code>memory_usage_bytes</code></td>
+                <td>Memory usage in bytes</td>
+                <td>bytes</td>
+                <td>1GB</td>
+              </tr>
+              <tr>
+                <td><code>network_rx_bytes</code></td>
+                <td>Network bytes received</td>
+                <td>bytes</td>
+                <td>100MB</td>
+              </tr>
+              <tr>
+                <td><code>network_tx_bytes</code></td>
+                <td>Network bytes transmitted</td>
+                <td>bytes</td>
+                <td>100MB</td>
+              </tr>
+              <tr>
+                <td><code>disk_read_bytes</code></td>
+                <td>Disk bytes read</td>
+                <td>bytes</td>
+                <td>50MB</td>
+              </tr>
+              <tr>
+                <td><code>disk_write_bytes</code></td>
+                <td>Disk bytes written</td>
+                <td>bytes</td>
+                <td>50MB</td>
+              </tr>
+              <tr>
+                <td><code>container_status</code></td>
+                <td>Container status</td>
+                <td>string</td>
+                <td>stopped</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Creating Alert Rules</h2>
+          <p>Follow these steps to create effective alert rules:</p>
+
+          <h3>Step 1: Define the Alert</h3>
+          <ol>
+            <li>Go to the <strong>Alerts</strong> section in the sidebar</li>
+            <li>Click <strong>Create New Alert</strong></li>
+            <li>Enter a descriptive name and description</li>
+          </ol>
+
+          <h3>Step 2: Configure the Condition</h3>
+          <ol>
+            <li>Select the metric to monitor</li>
+            <li>Choose the comparison operator</li>
+            <li>Set the threshold value</li>
+            <li>Define the duration (how long the condition must be true)</li>
+          </ol>
+
+          <h3>Step 3: Select Containers</h3>
+          <ul>
+            <li><strong>All Containers:</strong> Monitor all containers</li>
+            <li>
+              <strong>Specific Containers:</strong> Select individual containers
+            </li>
+            <li>
+              <strong>Container Groups:</strong> Use container labels or groups
+            </li>
+          </ul>
+
+          <h3>Step 4: Configure Notifications</h3>
+          <ul>
+            <li><strong>Email:</strong> Send email notifications</li>
+            <li><strong>Webhook:</strong> Send HTTP POST requests</li>
+            <li><strong>Slack:</strong> Send Slack messages</li>
+            <li><strong>Custom:</strong> Integrate with other systems</li>
+          </ul>
+
+          <h2>Alert Examples</h2>
+          <p>Here are some common alert rule examples:</p>
+
+          <h3>High CPU Usage</h3>
+          <pre><code>{
+  "name": "High CPU Usage",
+  "description": "Alert when CPU usage exceeds 80% for 5 minutes",
+  "metric": "cpu_usage",
+  "condition": ">",
+  "threshold": 80,
+  "duration": "5m",
+  "containers": ["all"],
+  "notifications": {
+    "email": ["admin@example.com"],
+    "slack": "https://hooks.slack.com/services/..."
+  }
+}</code></pre>
+
+          <h3>High Memory Usage</h3>
+          <pre><code>{
+  "name": "High Memory Usage",
+  "description": "Alert when memory usage exceeds 90% for 3 minutes",
+  "metric": "memory_usage",
+  "condition": ">",
+  "threshold": 90,
+  "duration": "3m",
+  "containers": ["web-app", "api-server"],
+  "notifications": {
+    "email": ["admin@example.com", "devops@example.com"]
+  }
+}</code></pre>
+
+          <h3>Container Down</h3>
+          <pre><code>{
+  "name": "Container Down",
+  "description": "Alert when container stops unexpectedly",
+  "metric": "container_status",
+  "condition": "==",
+  "threshold": "stopped",
+  "duration": "1m",
+  "containers": ["critical-app"],
+  "notifications": {
+    "email": ["admin@example.com"],
+    "webhook": "https://pagerduty.com/webhook/..."
+  }
+}</code></pre>
+
+          <h3>High Network Traffic</h3>
+          <pre><code>{
+  "name": "High Network Traffic",
+  "description": "Alert when network traffic exceeds 100MB in 1 minute",
+  "metric": "network_rx_bytes",
+  "condition": ">",
+  "threshold": 104857600,
+  "duration": "1m",
+  "containers": ["all"],
+  "notifications": {
+    "slack": "https://hooks.slack.com/services/..."
+  }
+}</code></pre>
+
+          <h2>Notification Channels</h2>
+          <p>Configure multiple notification channels for your alerts:</p>
+
+          <h3>Email Notifications</h3>
+          <p>Send email alerts to one or more recipients:</p>
+          <ul>
+            <li>
+              <strong>SMTP Configuration:</strong> Configure SMTP settings in
+              environment variables
+            </li>
+            <li>
+              <strong>Email Templates:</strong> Customize email content and
+              format
+            </li>
+            <li>
+              <strong>Multiple Recipients:</strong> Send to multiple email
+              addresses
+            </li>
+            <li>
+              <strong>HTML Formatting:</strong> Rich HTML email formatting
+            </li>
+          </ul>
+
+          <h3>Webhook Notifications</h3>
+          <p>Send HTTP POST requests to external systems:</p>
+          <ul>
+            <li>
+              <strong>Custom Endpoints:</strong> Send to any HTTP endpoint
+            </li>
+            <li><strong>JSON Payload:</strong> Structured JSON data</li>
+            <li>
+              <strong>Authentication:</strong> Support for API keys and tokens
+            </li>
+            <li><strong>Retry Logic:</strong> Automatic retry on failure</li>
+          </ul>
+
+          <h3>Slack Integration</h3>
+          <p>Send alerts to Slack channels:</p>
+          <ul>
+            <li><strong>Webhook URLs:</strong> Use Slack webhook URLs</li>
+            <li>
+              <strong>Channel Selection:</strong> Choose specific Slack channels
+            </li>
+            <li>
+              <strong>Rich Messages:</strong> Include attachments and formatting
+            </li>
+            <li>
+              <strong>Mention Users:</strong> Mention specific users in alerts
+            </li>
+          </ul>
+
+          <h3>Custom Integrations</h3>
+          <p>Integrate with other notification systems:</p>
+          <ul>
+            <li><strong>PagerDuty:</strong> Incident management integration</li>
+            <li><strong>Discord:</strong> Discord webhook integration</li>
+            <li><strong>Teams:</strong> Microsoft Teams integration</li>
+            <li><strong>Custom APIs:</strong> Build custom integrations</li>
+          </ul>
+
+          <h2>Alert Management</h2>
+          <p>Effectively manage and track your alerts:</p>
+
+          <h3>Alert States</h3>
+          <ul>
+            <li><strong>Active:</strong> Alert is currently triggered</li>
+            <li>
+              <strong>Acknowledged:</strong> Alert has been acknowledged but not
+              resolved
+            </li>
+            <li>
+              <strong>Resolved:</strong> Alert condition has returned to normal
+            </li>
+            <li>
+              <strong>Suppressed:</strong> Alert is temporarily suppressed
+            </li>
+          </ul>
+
+          <h3>Alert Actions</h3>
+          <ul>
+            <li><strong>Acknowledge:</strong> Mark alert as acknowledged</li>
+            <li><strong>Resolve:</strong> Manually resolve the alert</li>
+            <li><strong>Suppress:</strong> Temporarily suppress the alert</li>
+            <li><strong>Escalate:</strong> Escalate to higher priority</li>
+          </ul>
+
+          <h3>Alert History</h3>
+          <ul>
+            <li>
+              <strong>Historical Data:</strong> View past alert occurrences
+            </li>
+            <li><strong>Trend Analysis:</strong> Analyze alert patterns</li>
+            <li>
+              <strong>Performance Metrics:</strong> Track alert system
+              performance
+            </li>
+            <li>
+              <strong>Audit Trail:</strong> Complete audit trail of alert
+              actions
+            </li>
+          </ul>
+
+          <h2>Escalation Policies</h2>
+          <p>Set up automatic escalation for critical alerts:</p>
+
+          <h3>Escalation Levels</h3>
+          <ul>
+            <li>
+              <strong>Level 1:</strong> Initial notification to on-call engineer
+            </li>
+            <li>
+              <strong>Level 2:</strong> Escalate to senior engineer after
+              timeout
+            </li>
+            <li>
+              <strong>Level 3:</strong> Escalate to manager for critical issues
+            </li>
+            <li><strong>Level 4:</strong> Emergency escalation procedures</li>
+          </ul>
+
+          <h3>Escalation Rules</h3>
+          <ul>
+            <li>
+              <strong>Time-based:</strong> Escalate after specific time periods
+            </li>
+            <li>
+              <strong>Condition-based:</strong> Escalate based on alert severity
+            </li>
+            <li>
+              <strong>Pattern-based:</strong> Escalate for recurring alerts
+            </li>
+            <li><strong>Manual Escalation:</strong> Allow manual escalation</li>
+          </ul>
+
+          <h2>Alert Suppression</h2>
+          <p>Prevent alert spam during maintenance or known issues:</p>
+
+          <h3>Suppression Types</h3>
+          <ul>
+            <li>
+              <strong>Time-based:</strong> Suppress during scheduled maintenance
+            </li>
+            <li>
+              <strong>Container-based:</strong> Suppress for specific containers
+            </li>
+            <li><strong>Alert-based:</strong> Suppress specific alert types</li>
+            <li>
+              <strong>Manual Suppression:</strong> Temporary manual suppression
+            </li>
+          </ul>
+
+          <h3>Suppression Rules</h3>
+          <ul>
+            <li>
+              <strong>Maintenance Windows:</strong> Define maintenance periods
+            </li>
+            <li>
+              <strong>Known Issues:</strong> Suppress during known problems
+            </li>
+            <li><strong>Testing Periods:</strong> Suppress during testing</li>
+            <li><strong>Recovery Periods:</strong> Suppress during recovery</li>
+          </ul>
+
+          <h2>Best Practices</h2>
+          <p>Follow these best practices for effective alerting:</p>
+
+          <h3>Alert Design</h3>
+          <ul>
+            <li>
+              <strong>Meaningful Names:</strong> Use descriptive alert names
+            </li>
+            <li>
+              <strong>Clear Descriptions:</strong> Explain what the alert
+              monitors
+            </li>
+            <li>
+              <strong>Appropriate Thresholds:</strong> Set realistic thresholds
+            </li>
+            <li>
+              <strong>Reasonable Durations:</strong> Avoid too short or long
+              durations
+            </li>
+          </ul>
+
+          <h3>Notification Strategy</h3>
+          <ul>
+            <li>
+              <strong>Right Channel:</strong> Use appropriate notification
+              channels
+            </li>
+            <li><strong>Right People:</strong> Notify the right people</li>
+            <li>
+              <strong>Right Time:</strong> Consider time zones and schedules
+            </li>
+            <li>
+              <strong>Right Frequency:</strong> Avoid notification fatigue
+            </li>
+          </ul>
+
+          <h3>Alert Maintenance</h3>
+          <ul>
+            <li>
+              <strong>Regular Review:</strong> Review and update alert rules
+            </li>
+            <li>
+              <strong>Performance Monitoring:</strong> Monitor alert system
+              performance
+            </li>
+            <li>
+              <strong>Documentation:</strong> Document alert configurations
+            </li>
+            <li><strong>Testing:</strong> Test alert rules regularly</li>
+          </ul>
+
+          <h2>API Integration</h2>
+          <p>Manage alerts programmatically using the API:</p>
+
+          <h3>Alert Management API</h3>
+          <ul>
+            <li>
+              <strong>Create Alerts:</strong> <code>POST /api/v1/alerts</code>
+            </li>
+            <li>
+              <strong>List Alerts:</strong> <code>GET /api/v1/alerts</code>
+            </li>
+            <li>
+              <strong>Update Alerts:</strong>
+              <code>PUT /api/v1/alerts/{id}</code>
+            </li>
+            <li>
+              <strong>Delete Alerts:</strong>
+              <code>DELETE /api/v1/alerts/{id}</code>
+            </li>
+            <li>
+              <strong>Alert Events:</strong>
+              <code>GET /api/v1/alerts/events</code>
+            </li>
+          </ul>
+
+          <h3>Webhook Integration</h3>
+          <p>Receive alert notifications via webhooks:</p>
+          <pre><code>{
+  "alert_id": "alert_001",
+  "alert_name": "High CPU Usage",
+  "status": "triggered",
+  "timestamp": "2025-01-14T21:00:00Z",
+  "metric": "cpu_usage",
+  "value": 85.5,
+  "threshold": 80,
+  "container_id": "abc123def456",
+  "container_name": "web-app"
+}</code></pre>
+
+          <h2>Next Steps</h2>
+          <p>
+            Now that you understand the alerting system, explore these related
+            topics:
+          </p>
+
+          <ul>
+            <li>
+              <a href="monitoring.html">Set up comprehensive monitoring</a>
+            </li>
+            <li>
+              <a href="metrics.html">Learn about metrics and analytics</a>
+            </li>
+            <li>
+              <a href="configuration.html">Configure notification channels</a>
+            </li>
+            <li><a href="api.html">Integrate with external systems</a></li>
+            <li>
+              <a href="best-practices.html">Follow alerting best practices</a>
+            </li>
+          </ul>
+
+          <div class="docs-alert info">
+            <strong>Need Help?</strong> If you need assistance with alert setup,
+            check our
+            <a href="troubleshooting.html">Troubleshooting Guide</a> or
+            <a href="faq.html">FAQ</a>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="../assets/logo.svg"
+                alt="DockScope"
+                class="logo"
+              />
+              <span class="logo-text">DockScope</span>
+            </div>
+            <p>
+              Lightweight, agent-based Docker container monitoring and alerting
+              system.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://github.com/GovindSingh9447/DockScope"
+                target="_blank"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h4>Documentation</h4>
+            <ul>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="quickstart.html">Quick Start</a></li>
+              <li><a href="api.html">API Reference</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+              <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 DockScope. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
