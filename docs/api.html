@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>API Reference - DockScope Documentation</title>
+    <link
+      rel="stylesheet"
+      href="../styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="docs.css"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../assets/favicon.svg"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/favicon.png"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../assets/favicon.ico"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="../assets/logo.svg"
+            alt="DockScope"
+            class="logo"
+          />
+          <span class="logo-text">DockScope</span>
+        </div>
+        <div
+          class="nav-menu"
+          id="nav-menu"
+        >
+          <a
+            href="../index.html"
+            class="nav-link"
+            >Home</a
+          >
+          <a
+            href="../index.html#features"
+            class="nav-link"
+            >Features</a
+          >
+          <a
+            href="https://github.com/GovindSingh9447/DockScope"
+            target="_blank"
+            class="nav-link"
+            >GitHub</a
+          >
+          <a
+            href="index.html"
+            class="nav-link active"
+            >Documentation</a
+          >
+          <a
+            href="../index.html#contact"
+            class="nav-link"
+            >Contact</a
+          >
+        </div>
+        <div class="nav-buttons">
+          <a
+            href="../demo.html"
+            class="btn btn-secondary"
+            >Try Demo</a
+          >
+          <a
+            href="../index.html#get-started"
+            class="btn btn-primary"
+            >Get Started Free</a
+          >
+        </div>
+        <div
+          class="nav-toggle"
+          id="nav-toggle"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Documentation Content -->
+    <section class="docs-content">
+      <div class="docs-sidebar">
+        <div class="docs-nav">
+          <h3>Getting Started</h3>
+          <ul>
+            <li>
+              <a href="installation.html"
+                ><i class="fas fa-download"></i> Installation</a
+              >
+            </li>
+            <li>
+              <a href="quickstart.html"
+                ><i class="fas fa-rocket"></i> Quick Start</a
+              >
+            </li>
+            <li>
+              <a href="configuration.html"
+                ><i class="fas fa-cog"></i> Configuration</a
+              >
+            </li>
+          </ul>
+
+          <h3>Core Features</h3>
+          <ul>
+            <li>
+              <a href="monitoring.html"
+                ><i class="fas fa-chart-line"></i> Container Monitoring</a
+              >
+            </li>
+            <li>
+              <a href="alerts.html"
+                ><i class="fas fa-bell"></i> Alerting System</a
+              >
+            </li>
+            <li>
+              <a href="metrics.html"
+                ><i class="fas fa-tachometer-alt"></i> Metrics & Analytics</a
+              >
+            </li>
+            <li>
+              <a href="logs.html"
+                ><i class="fas fa-file-alt"></i> Log Management</a
+              >
+            </li>
+          </ul>
+
+          <h3>Advanced Topics</h3>
+          <ul>
+            <li>
+              <a
+                href="api.html"
+                class="active"
+                ><i class="fas fa-code"></i> API Reference</a
+              >
+            </li>
+            <li>
+              <a href="deployment.html"
+                ><i class="fas fa-server"></i> Production Deployment</a
+              >
+            </li>
+            <li>
+              <a href="security.html"
+                ><i class="fas fa-shield-alt"></i> Security</a
+              >
+            </li>
+            <li>
+              <a href="troubleshooting.html"
+                ><i class="fas fa-wrench"></i> Troubleshooting</a
+              >
+            </li>
+          </ul>
+
+          <h3>Guides</h3>
+          <ul>
+            <li>
+              <a href="best-practices.html"
+                ><i class="fas fa-star"></i> Best Practices</a
+              >
+            </li>
+            <li>
+              <a href="examples.html"
+                ><i class="fas fa-lightbulb"></i> Examples</a
+              >
+            </li>
+            <li>
+              <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="docs-main">
+        <div class="docs-welcome">
+          <h1>API Reference</h1>
+          <p>
+            Complete API documentation for DockScope. All endpoints return JSON
+            responses and use standard HTTP status codes.
+          </p>
+
+          <div class="docs-alert info">
+            <strong>Base URL:</strong>
+            <code>http://localhost:8080/api/v1</code> (adjust host and port as
+            needed)
+          </div>
+
+          <h2>Authentication</h2>
+          <p>
+            Most API endpoints require authentication using JWT tokens. Include
+            the token in the Authorization header:
+          </p>
+          <pre><code>Authorization: Bearer YOUR_JWT_TOKEN</code></pre>
+
+          <h2>Common Response Format</h2>
+          <p>All API responses follow this standard format:</p>
+          <pre><code>{
+  "success": true,
+  "data": {
+    // Response data here
+  },
+  "message": "Operation completed successfully",
+  "timestamp": "2025-01-14T21:00:00Z"
+}</code></pre>
+
+          <h2>Error Responses</h2>
+          <p>Error responses include additional error details:</p>
+          <pre><code>{
+  "success": false,
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid input parameters",
+    "details": {
+      "field": "container_id",
+      "issue": "Container ID is required"
+    }
+  },
+  "timestamp": "2025-01-14T21:00:00Z"
+}</code></pre>
+
+          <h2>Endpoints</h2>
+
+          <h3>Authentication</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>POST</code></td>
+                <td><code>/auth/login</code></td>
+                <td>Authenticate user and get JWT token</td>
+              </tr>
+              <tr>
+                <td><code>POST</code></td>
+                <td><code>/auth/register</code></td>
+                <td>Register new user account</td>
+              </tr>
+              <tr>
+                <td><code>POST</code></td>
+                <td><code>/auth/logout</code></td>
+                <td>Logout and invalidate token</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/auth/me</code></td>
+                <td>Get current user information</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Login Example</h4>
+          <pre><code>POST /api/v1/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "your_password"
+}
+
+Response:
+{
+  "success": true,
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "user": {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@example.com",
+      "role": "admin"
+    }
+  },
+  "message": "Login successful"
+}</code></pre>
+
+          <h3>Containers</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/containers</code></td>
+                <td>List all containers</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/containers/{id}</code></td>
+                <td>Get container details</td>
+              </tr>
+              <tr>
+                <td><code>POST</code></td>
+                <td><code>/containers/{id}/start</code></td>
+                <td>Start container</td>
+              </tr>
+              <tr>
+                <td><code>POST</code></td>
+                <td><code>/containers/{id}/stop</code></td>
+                <td>Stop container</td>
+              </tr>
+              <tr>
+                <td><code>POST</code></td>
+                <td><code>/containers/{id}/restart</code></td>
+                <td>Restart container</td>
+              </tr>
+              <tr>
+                <td><code>DELETE</code></td>
+                <td><code>/containers/{id}</code></td>
+                <td>Remove container</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>List Containers Example</h4>
+          <pre><code>GET /api/v1/containers
+Authorization: Bearer YOUR_JWT_TOKEN
+
+Response:
+{
+  "success": true,
+  "data": {
+    "containers": [
+      {
+        "id": "abc123def456",
+        "name": "web-app",
+        "image": "nginx:latest",
+        "status": "running",
+        "ports": ["80:80"],
+        "created": "2025-01-14T20:00:00Z",
+        "cpu_usage": 2.5,
+        "memory_usage": 45.2,
+        "network_io": {
+          "rx_bytes": 1024000,
+          "tx_bytes": 512000
+        }
+      }
+    ],
+    "total": 1
+  }
+}</code></pre>
+
+          <h3>Metrics</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/metrics/containers/{id}</code></td>
+                <td>Get container metrics</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/metrics/system</code></td>
+                <td>Get system metrics</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/metrics/history</code></td>
+                <td>Get historical metrics</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Container Metrics Example</h4>
+          <pre><code>GET /api/v1/metrics/containers/abc123def456?period=1h
+Authorization: Bearer YOUR_JWT_TOKEN
+
+Response:
+{
+  "success": true,
+  "data": {
+    "container_id": "abc123def456",
+    "period": "1h",
+    "metrics": {
+      "cpu": [
+        {"timestamp": "2025-01-14T20:00:00Z", "value": 2.5},
+        {"timestamp": "2025-01-14T20:01:00Z", "value": 3.1}
+      ],
+      "memory": [
+        {"timestamp": "2025-01-14T20:00:00Z", "value": 45.2},
+        {"timestamp": "2025-01-14T20:01:00Z", "value": 46.8}
+      ],
+      "network": [
+        {"timestamp": "2025-01-14T20:00:00Z", "rx": 1024000, "tx": 512000},
+        {"timestamp": "2025-01-14T20:01:00Z", "rx": 1056000, "tx": 524000}
+      ]
+    }
+  }
+}</code></pre>
+
+          <h3>Alerts</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/alerts</code></td>
+                <td>List all alert rules</td>
+              </tr>
+              <tr>
+                <td><code>POST</code></td>
+                <td><code>/alerts</code></td>
+                <td>Create new alert rule</td>
+              </tr>
+              <tr>
+                <td><code>PUT</code></td>
+                <td><code>/alerts/{id}</code></td>
+                <td>Update alert rule</td>
+              </tr>
+              <tr>
+                <td><code>DELETE</code></td>
+                <td><code>/alerts/{id}</code></td>
+                <td>Delete alert rule</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/alerts/events</code></td>
+                <td>Get alert events</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Create Alert Rule Example</h4>
+          <pre><code>POST /api/v1/alerts
+Authorization: Bearer YOUR_JWT_TOKEN
+Content-Type: application/json
+
+{
+  "name": "High CPU Usage",
+  "description": "Alert when CPU usage exceeds 80%",
+  "metric": "cpu_usage",
+  "condition": ">",
+  "threshold": 80,
+  "duration": "5m",
+  "containers": ["abc123def456"],
+  "notifications": {
+    "email": ["admin@example.com"],
+    "webhook": "https://hooks.slack.com/services/..."
+  }
+}
+
+Response:
+{
+  "success": true,
+  "data": {
+    "id": "alert_001",
+    "name": "High CPU Usage",
+    "status": "active",
+    "created": "2025-01-14T21:00:00Z"
+  },
+  "message": "Alert rule created successfully"
+}</code></pre>
+
+          <h3>Logs</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/logs/containers/{id}</code></td>
+                <td>Get container logs</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/logs/search</code></td>
+                <td>Search logs across containers</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/logs/stream/{id}</code></td>
+                <td>Stream container logs (WebSocket)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Get Container Logs Example</h4>
+          <pre><code>GET /api/v1/logs/containers/abc123def456?tail=100&follow=false
+Authorization: Bearer YOUR_JWT_TOKEN
+
+Response:
+{
+  "success": true,
+  "data": {
+    "container_id": "abc123def456",
+    "logs": [
+      {
+        "timestamp": "2025-01-14T21:00:00Z",
+        "level": "INFO",
+        "message": "Server started on port 80"
+      },
+      {
+        "timestamp": "2025-01-14T21:00:01Z",
+        "level": "INFO",
+        "message": "Request received: GET /api/health"
+      }
+    ],
+    "total": 100
+  }
+}</code></pre>
+
+          <h3>System Information</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Endpoint</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/system/info</code></td>
+                <td>Get system information</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/system/health</code></td>
+                <td>Check system health</td>
+              </tr>
+              <tr>
+                <td><code>GET</code></td>
+                <td><code>/system/stats</code></td>
+                <td>Get system statistics</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>WebSocket API</h2>
+          <p>For real-time updates, DockScope provides WebSocket endpoints:</p>
+
+          <h3>Real-time Metrics</h3>
+          <pre><code>WebSocket: ws://localhost:8080/api/v1/ws/metrics
+
+Message format:
+{
+  "type": "subscribe",
+  "container_id": "abc123def456",
+  "metrics": ["cpu", "memory", "network"]
+}
+
+Real-time updates:
+{
+  "type": "metrics_update",
+  "container_id": "abc123def456",
+  "timestamp": "2025-01-14T21:00:00Z",
+  "data": {
+    "cpu": 2.5,
+    "memory": 45.2,
+    "network": {
+      "rx_bytes": 1024000,
+      "tx_bytes": 512000
+    }
+  }
+}</code></pre>
+
+          <h3>Real-time Logs</h3>
+          <pre><code>WebSocket: ws://localhost:8080/api/v1/ws/logs
+
+Message format:
+{
+  "type": "subscribe",
+  "container_id": "abc123def456"
+}
+
+Real-time log updates:
+{
+  "type": "log_update",
+  "container_id": "abc123def456",
+  "timestamp": "2025-01-14T21:00:00Z",
+  "level": "INFO",
+  "message": "New request received"
+}</code></pre>
+
+          <h2>Rate Limiting</h2>
+          <p>API endpoints are rate-limited to prevent abuse:</p>
+          <ul>
+            <li>
+              <strong>Authentication endpoints:</strong> 5 requests per minute
+            </li>
+            <li><strong>Read operations:</strong> 100 requests per minute</li>
+            <li><strong>Write operations:</strong> 20 requests per minute</li>
+          </ul>
+
+          <h2>Error Codes</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>HTTP Status</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>UNAUTHORIZED</code></td>
+                <td>401</td>
+                <td>Authentication required</td>
+              </tr>
+              <tr>
+                <td><code>FORBIDDEN</code></td>
+                <td>403</td>
+                <td>Insufficient permissions</td>
+              </tr>
+              <tr>
+                <td><code>NOT_FOUND</code></td>
+                <td>404</td>
+                <td>Resource not found</td>
+              </tr>
+              <tr>
+                <td><code>VALIDATION_ERROR</code></td>
+                <td>400</td>
+                <td>Invalid input parameters</td>
+              </tr>
+              <tr>
+                <td><code>RATE_LIMIT_EXCEEDED</code></td>
+                <td>429</td>
+                <td>Too many requests</td>
+              </tr>
+              <tr>
+                <td><code>INTERNAL_ERROR</code></td>
+                <td>500</td>
+                <td>Internal server error</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>SDK Libraries</h2>
+          <p>
+            We provide official SDK libraries for popular programming languages:
+          </p>
+          <ul>
+            <li>
+              <strong>Python:</strong> <code>pip install dockscope-python</code>
+            </li>
+            <li>
+              <strong>JavaScript:</strong> <code>npm install dockscope-js</code>
+            </li>
+            <li>
+              <strong>Go:</strong>
+              <code>go get github.com/GovindSingh9447/DockScope</code>
+            </li>
+          </ul>
+
+          <div class="docs-alert info">
+            <strong>Need Help?</strong> Check our
+            <a href="examples.html">API examples</a> or
+            <a href="../index.html#contact">contact support</a> for assistance.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="../assets/logo.svg"
+                alt="DockScope"
+                class="logo"
+              />
+              <span class="logo-text">DockScope</span>
+            </div>
+            <p>
+              Lightweight, agent-based Docker container monitoring and alerting
+              system.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://github.com/GovindSingh9447/DockScope"
+                target="_blank"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h4>Documentation</h4>
+            <ul>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="quickstart.html">Quick Start</a></li>
+              <li><a href="api.html">API Reference</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+              <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 DockScope. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

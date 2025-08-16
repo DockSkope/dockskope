@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>DockScope Demo - Simple</title>
+    <link
+      rel="stylesheet"
+      href="styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      .demo-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .demo-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        padding: 2rem;
+        border-radius: 1rem;
+        color: white;
+        margin-top: 1rem;
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .demo-card {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e5e7eb;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .demo-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .metric-item {
+        text-align: center;
+        padding: 1rem;
+        background: #f9fafb;
+        border-radius: 0.5rem;
+      }
+
+      .metric-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1e3a8a;
+      }
+
+      .metric-label {
+        font-size: 0.875rem;
+        color: #6b7280;
+      }
+
+      .chart-container {
+        height: 200px;
+        background: #f9fafb;
+        border-radius: 0.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .chart-line {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        height: 2px;
+        background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+        border-radius: 1px;
+        width: 0%;
+        transition: width 2s ease;
+      }
+
+      .alert-item {
+        padding: 0.75rem;
+        border-left: 4px solid;
+        margin-bottom: 0.5rem;
+        background: #f9fafb;
+        border-radius: 0.25rem;
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.5s ease;
+      }
+
+      .alert-warning {
+        border-color: #f59e0b;
+      }
+      .alert-error {
+        border-color: #ef4444;
+      }
+      .alert-info {
+        border-color: #0db7ed;
+      }
+
+      @media (max-width: 768px) {
+        .demo-grid {
+          grid-template-columns: 1fr;
+        }
+        .metric-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo-container">
+      <div class="demo-header">
+        <h1>DockScope Live Demo</h1>
+        <p>Experience real-time container monitoring in action</p>
+      </div>
+
+      <div class="demo-grid">
+        <!-- System Overview -->
+        <div class="demo-card">
+          <h3><i class="fas fa-server"></i> System Overview</h3>
+          <div class="metric-grid">
+            <div class="metric-item">
+              <div
+                class="metric-value"
+                id="total-containers"
+              >
+                0
+              </div>
+              <div class="metric-label">Total Containers</div>
+            </div>
+            <div class="metric-item">
+              <div
+                class="metric-value"
+                id="running-containers"
+              >
+                0
+              </div>
+              <div class="metric-label">Running</div>
+            </div>
+            <div class="metric-item">
+              <div
+                class="metric-value"
+                id="cpu-usage"
+              >
+                0%
+              </div>
+              <div class="metric-label">CPU Usage</div>
+            </div>
+            <div class="metric-item">
+              <div
+                class="metric-value"
+                id="memory-usage"
+              >
+                0%
+              </div>
+              <div class="metric-label">Memory Usage</div>
+            </div>
+          </div>
+          <div class="chart-container">
+            <div class="chart-line"></div>
+          </div>
+        </div>
+
+        <!-- Recent Alerts -->
+        <div class="demo-card">
+          <h3><i class="fas fa-bell"></i> Recent Alerts</h3>
+          <div class="alert-list">
+            <div class="alert-item alert-warning">
+              <div class="alert-header">
+                <span class="alert-title">High CPU Usage</span>
+                <span class="alert-time">2 min ago</span>
+              </div>
+              <div class="alert-message">Container nginx is using 85% CPU</div>
+            </div>
+            <div class="alert-item alert-error">
+              <div class="alert-header">
+                <span class="alert-title">Container Stopped</span>
+                <span class="alert-time">5 min ago</span>
+              </div>
+              <div class="alert-message">
+                Container redis unexpectedly stopped
+              </div>
+            </div>
+            <div class="alert-item alert-info">
+              <div class="alert-header">
+                <span class="alert-title">New Container</span>
+                <span class="alert-time">10 min ago</span>
+              </div>
+              <div class="alert-message">
+                Container app-v2.1.0 started successfully
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        console.log('Simple demo page loaded!');
+
+        // Animate metrics
+        function animateMetric(elementId, target, suffix = '') {
+          const element = document.getElementById(elementId);
+          if (!element) {
+            console.warn('Element not found:', elementId);
+            return;
+          }
+
+          let current = 0;
+          const increment = target / 50;
+
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            element.textContent = Math.floor(current) + suffix;
+          }, 50);
+        }
+
+        // Initialize chart animations
+        function initChartAnimations() {
+          const chartLines = document.querySelectorAll('.chart-line');
+          chartLines.forEach((line, index) => {
+            setTimeout(() => {
+              line.style.width = '100%';
+            }, index * 300);
+          });
+        }
+
+        // Start animations
+        setTimeout(() => {
+          console.log('Starting animations...');
+          animateMetric('total-containers', 12);
+          animateMetric('running-containers', 8);
+          animateMetric('cpu-usage', 67, '%');
+          animateMetric('memory-usage', 82, '%');
+          initChartAnimations();
+        }, 1000);
+
+        // Add alert animations
+        const alertItems = document.querySelectorAll('.alert-item');
+        alertItems.forEach((alert, index) => {
+          setTimeout(() => {
+            alert.style.opacity = '1';
+            alert.style.transform = 'translateX(0)';
+          }, index * 200);
+        });
+
+        console.log('Animations initialized!');
+      });
+    </script>
+  </body>
+</html>

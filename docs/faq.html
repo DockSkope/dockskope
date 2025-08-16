@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>FAQ - DockScope Documentation</title>
+    <link
+      rel="stylesheet"
+      href="../styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="docs.css"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../assets/favicon.svg"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/favicon.png"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../assets/favicon.ico"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="../assets/logo.svg"
+            alt="DockScope"
+            class="logo"
+          />
+          <span class="logo-text">DockScope</span>
+        </div>
+        <div
+          class="nav-menu"
+          id="nav-menu"
+        >
+          <a
+            href="../index.html"
+            class="nav-link"
+            >Home</a
+          >
+          <a
+            href="../index.html#features"
+            class="nav-link"
+            >Features</a
+          >
+          <a
+            href="https://github.com/GovindSingh9447/DockScope"
+            target="_blank"
+            class="nav-link"
+            >GitHub</a
+          >
+          <a
+            href="index.html"
+            class="nav-link active"
+            >Documentation</a
+          >
+          <a
+            href="../index.html#contact"
+            class="nav-link"
+            >Contact</a
+          >
+        </div>
+        <div class="nav-buttons">
+          <a
+            href="../demo.html"
+            class="btn btn-secondary"
+            >Try Demo</a
+          >
+          <a
+            href="../index.html#get-started"
+            class="btn btn-primary"
+            >Get Started Free</a
+          >
+        </div>
+        <div
+          class="nav-toggle"
+          id="nav-toggle"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Documentation Content -->
+    <section class="docs-content">
+      <div class="docs-sidebar">
+        <div class="docs-nav">
+          <h3>Getting Started</h3>
+          <ul>
+            <li>
+              <a href="installation.html"
+                ><i class="fas fa-download"></i> Installation</a
+              >
+            </li>
+            <li>
+              <a href="quickstart.html"
+                ><i class="fas fa-rocket"></i> Quick Start</a
+              >
+            </li>
+            <li>
+              <a href="configuration.html"
+                ><i class="fas fa-cog"></i> Configuration</a
+              >
+            </li>
+          </ul>
+
+          <h3>Core Features</h3>
+          <ul>
+            <li>
+              <a href="monitoring.html"
+                ><i class="fas fa-chart-line"></i> Container Monitoring</a
+              >
+            </li>
+            <li>
+              <a href="alerts.html"
+                ><i class="fas fa-bell"></i> Alerting System</a
+              >
+            </li>
+            <li>
+              <a href="metrics.html"
+                ><i class="fas fa-tachometer-alt"></i> Metrics & Analytics</a
+              >
+            </li>
+            <li>
+              <a href="logs.html"
+                ><i class="fas fa-file-alt"></i> Log Management</a
+              >
+            </li>
+          </ul>
+
+          <h3>Advanced Topics</h3>
+          <ul>
+            <li>
+              <a href="api.html"><i class="fas fa-code"></i> API Reference</a>
+            </li>
+            <li>
+              <a href="deployment.html"
+                ><i class="fas fa-server"></i> Production Deployment</a
+              >
+            </li>
+            <li>
+              <a href="security.html"
+                ><i class="fas fa-shield-alt"></i> Security</a
+              >
+            </li>
+            <li>
+              <a href="troubleshooting.html"
+                ><i class="fas fa-wrench"></i> Troubleshooting</a
+              >
+            </li>
+          </ul>
+
+          <h3>Guides</h3>
+          <ul>
+            <li>
+              <a href="best-practices.html"
+                ><i class="fas fa-star"></i> Best Practices</a
+              >
+            </li>
+            <li>
+              <a href="examples.html"
+                ><i class="fas fa-lightbulb"></i> Examples</a
+              >
+            </li>
+            <li>
+              <a
+                href="faq.html"
+                class="active"
+                ><i class="fas fa-question-circle"></i> FAQ</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="docs-main">
+        <div class="docs-welcome">
+          <h1>Frequently Asked Questions</h1>
+          <p>
+            Find answers to common questions about DockScope. If you don't see
+            your question here, please
+            <a href="../index.html#contact">contact us</a>.
+          </p>
+
+          <div class="faq-section">
+            <h2>General Questions</h2>
+
+            <div class="faq-item">
+              <h3>What is DockScope?</h3>
+              <p>
+                DockScope is a lightweight, agent-based Docker container
+                monitoring and alerting system. It provides real-time insights
+                into your containerized applications with features like resource
+                monitoring, alerting, log management, and container lifecycle
+                management.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How is DockScope different from other monitoring tools?</h3>
+              <p>
+                DockScope is specifically designed for Docker containers with a
+                focus on simplicity and efficiency. Unlike complex enterprise
+                monitoring solutions, DockScope provides:
+              </p>
+              <ul>
+                <li>Lightweight agent architecture</li>
+                <li>Zero-configuration setup</li>
+                <li>Real-time container metrics</li>
+                <li>Built-in alerting system</li>
+                <li>Modern web interface</li>
+                <li>RESTful API for integration</li>
+              </ul>
+            </div>
+
+            <div class="faq-item">
+              <h3>What operating systems does DockScope support?</h3>
+              <p>
+                DockScope supports Linux, macOS, and Windows (with WSL2). The
+                agent and backend are written in Go, making them cross-platform
+                compatible.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Is DockScope free to use?</h3>
+              <p>
+                Yes, DockScope is open-source and free to use. You can find the
+                source code on
+                <a
+                  href="https://github.com/GovindSingh9447/DockScope"
+                  target="_blank"
+                  >GitHub</a
+                >.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-section">
+            <h2>Installation & Setup</h2>
+
+            <div class="faq-item">
+              <h3>What are the system requirements?</h3>
+              <p>Minimum requirements:</p>
+              <ul>
+                <li>Docker version 20.10 or higher</li>
+                <li>2GB RAM (4GB recommended)</li>
+                <li>1GB free disk space</li>
+                <li>Internet connection for initial setup</li>
+              </ul>
+            </div>
+
+            <div class="faq-item">
+              <h3>How do I install DockScope?</h3>
+              <p>The easiest way is using Docker Compose:</p>
+              <pre><code>git clone https://github.com/GovindSingh9447/DockScope.git
+cd DockScope
+docker-compose -f docker-compose.production.yml up -d</code></pre>
+              <p>
+                For detailed instructions, see our
+                <a href="installation.html">Installation Guide</a>.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Can I install DockScope without Docker?</h3>
+              <p>
+                Yes, you can install each component separately. See the
+                <a href="installation.html">Installation Guide</a> for manual
+                installation instructions.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How do I access the web interface?</h3>
+              <p>
+                After installation, the web interface is available at
+                <code>http://localhost:3000</code> by default.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-section">
+            <h2>Monitoring & Metrics</h2>
+
+            <div class="faq-item">
+              <h3>What metrics does DockScope collect?</h3>
+              <p>DockScope collects the following metrics:</p>
+              <ul>
+                <li>
+                  <strong>CPU Usage:</strong> Percentage of CPU utilization
+                </li>
+                <li>
+                  <strong>Memory Usage:</strong> Memory consumption in MB/GB
+                </li>
+                <li><strong>Network I/O:</strong> Bytes sent and received</li>
+                <li><strong>Disk I/O:</strong> Read and write operations</li>
+                <li>
+                  <strong>Container Status:</strong> Running, stopped, paused,
+                  etc.
+                </li>
+                <li>
+                  <strong>System Metrics:</strong> Host system resource usage
+                </li>
+              </ul>
+            </div>
+
+            <div class="faq-item">
+              <h3>How often are metrics collected?</h3>
+              <p>
+                By default, metrics are collected every 30 seconds. You can
+                configure this interval in the agent configuration.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How long is historical data retained?</h3>
+              <p>
+                Historical data is retained for 30 days by default. You can
+                configure retention policies in the InfluxDB configuration.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Can I monitor containers on multiple hosts?</h3>
+              <p>
+                Yes, DockScope supports multi-host monitoring. You can deploy
+                agents on multiple Docker hosts and they will all report to the
+                central backend.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-section">
+            <h2>Alerting</h2>
+
+            <div class="faq-item">
+              <h3>What types of alerts can I create?</h3>
+              <p>You can create alerts based on:</p>
+              <ul>
+                <li>CPU usage thresholds</li>
+                <li>Memory usage thresholds</li>
+                <li>Container status changes</li>
+                <li>Network I/O thresholds</li>
+                <li>Custom metrics</li>
+              </ul>
+            </div>
+
+            <div class="faq-item">
+              <h3>How do I receive alert notifications?</h3>
+              <p>DockScope supports multiple notification channels:</p>
+              <ul>
+                <li>Email notifications</li>
+                <li>Webhook integrations (Slack, Discord, etc.)</li>
+                <li>Custom HTTP endpoints</li>
+              </ul>
+            </div>
+
+            <div class="faq-item">
+              <h3>
+                Can I set up different alert thresholds for different
+                containers?
+              </h3>
+              <p>
+                Yes, you can create container-specific alert rules or apply
+                rules to groups of containers.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-section">
+            <h2>Security</h2>
+
+            <div class="faq-item">
+              <h3>Is DockScope secure?</h3>
+              <p>DockScope includes several security features:</p>
+              <ul>
+                <li>JWT-based authentication</li>
+                <li>Role-based access control</li>
+                <li>HTTPS support</li>
+                <li>Secure API endpoints</li>
+                <li>Environment variable configuration</li>
+              </ul>
+            </div>
+
+            <div class="faq-item">
+              <h3>How do I secure the installation?</h3>
+              <p>For production deployments:</p>
+              <ul>
+                <li>Change default passwords</li>
+                <li>Use HTTPS</li>
+                <li>Configure firewall rules</li>
+                <li>Use strong JWT secrets</li>
+                <li>Regular security updates</li>
+              </ul>
+            </div>
+
+            <div class="faq-item">
+              <h3>Does DockScope require root access?</h3>
+              <p>
+                No, DockScope can run with limited permissions. The agent only
+                needs access to the Docker socket and the ability to read system
+                metrics.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-section">
+            <h2>Troubleshooting</h2>
+
+            <div class="faq-item">
+              <h3>Why can't I see my containers?</h3>
+              <p>Common causes:</p>
+              <ul>
+                <li>Docker daemon not running</li>
+                <li>Agent not connected to backend</li>
+                <li>Permission issues with Docker socket</li>
+                <li>Network connectivity problems</li>
+              </ul>
+              <p>
+                Check the
+                <a href="troubleshooting.html">Troubleshooting Guide</a> for
+                detailed solutions.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How do I check if DockScope is running properly?</h3>
+              <p>You can check the status of each component:</p>
+              <pre><code># Check backend
+curl http://localhost:8080/health
+
+# Check agent
+curl http://localhost:9090/health
+
+# Check frontend
+curl http://localhost:3000</code></pre>
+            </div>
+
+            <div class="faq-item">
+              <h3>Where are the logs stored?</h3>
+              <p>Logs are stored in the following locations:</p>
+              <ul>
+                <li><strong>Backend:</strong> <code>backend/logs/</code></li>
+                <li><strong>Agent:</strong> <code>agent/logs/</code></li>
+                <li>
+                  <strong>Docker:</strong> <code>docker-compose logs</code>
+                </li>
+              </ul>
+            </div>
+
+            <div class="faq-item">
+              <h3>How do I update DockScope?</h3>
+              <p>To update DockScope:</p>
+              <pre><code># Pull latest changes
+git pull origin main
+
+# Rebuild and restart
+docker-compose -f docker-compose.production.yml down
+docker-compose -f docker-compose.production.yml up -d --build</code></pre>
+            </div>
+          </div>
+
+          <div class="faq-section">
+            <h2>API & Integration</h2>
+
+            <div class="faq-item">
+              <h3>Is there an API available?</h3>
+              <p>
+                Yes, DockScope provides a comprehensive RESTful API. See the
+                <a href="api.html">API Reference</a> for complete documentation.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Can I integrate DockScope with other tools?</h3>
+              <p>Yes, DockScope can integrate with:</p>
+              <ul>
+                <li>CI/CD pipelines</li>
+                <li>Monitoring dashboards (Grafana, etc.)</li>
+                <li>Notification services (Slack, Discord, etc.)</li>
+                <li>Custom applications via API</li>
+              </ul>
+            </div>
+
+            <div class="faq-item">
+              <h3>Are there SDK libraries available?</h3>
+              <p>Yes, we provide SDK libraries for:</p>
+              <ul>
+                <li>Python</li>
+                <li>JavaScript/Node.js</li>
+                <li>Go</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="docs-alert info">
+            <strong>Still have questions?</strong> If you couldn't find the
+            answer here, please
+            <a href="../index.html#contact">contact our support team</a> or
+            check our <a href="troubleshooting.html">Troubleshooting Guide</a>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img
+                src="../assets/logo.svg"
+                alt="DockScope"
+                class="logo"
+              />
+              <span class="logo-text">DockScope</span>
+            </div>
+            <p>
+              Lightweight, agent-based Docker container monitoring and alerting
+              system.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://github.com/GovindSingh9447/DockScope"
+                target="_blank"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h4>Documentation</h4>
+            <ul>
+              <li><a href="installation.html">Installation</a></li>
+              <li><a href="quickstart.html">Quick Start</a></li>
+              <li><a href="api.html">API Reference</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="troubleshooting.html">Troubleshooting</a></li>
+              <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 DockScope. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

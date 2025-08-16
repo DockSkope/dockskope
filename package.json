@@ -1,0 +1,52 @@
+{
+  "name": "dockscope-website",
+  "version": "1.0.0",
+  "description": "Official website for DockScope - Docker container monitoring and alerting system",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8000 || python -m http.server 8000 || php -S localhost:8000 || npx http-server -p 8000",
+    "build": "./deploy.sh build",
+    "deploy:local": "./deploy.sh local",
+    "deploy:github": "./deploy.sh github",
+    "deploy:netlify": "./deploy.sh netlify",
+    "deploy:vercel": "./deploy.sh vercel",
+    "validate": "./deploy.sh validate",
+    "lint:css": "stylelint styles.css",
+    "lint:js": "eslint script.js",
+    "optimize": "npm run build && npm run minify",
+    "minify": "npm install -g uglify-js clean-css-cli && uglifyjs script.js -o dist/script.min.js && cleancss -o dist/styles.min.css styles.css"
+  },
+  "keywords": [
+    "docker",
+    "monitoring",
+    "container",
+    "metrics",
+    "alerting",
+    "devops",
+    "website",
+    "landing-page"
+  ],
+  "author": "Govind Singh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GovindSingh9447/DockScope.git"
+  },
+  "homepage": "https://dockscope.com",
+  "devDependencies": {
+    "eslint": "^8.53.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "uglify-js": "^3.17.4",
+    "clean-css-cli": "^5.6.2",
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
