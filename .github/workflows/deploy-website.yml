@@ -30,7 +30,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dockskope   # 👈 change this if your built site is in dist/ or build/
+          path: .   # 👈 if index.html is in repo root
 
       - name: Deploy to GitHub Pages
         id: deployment
