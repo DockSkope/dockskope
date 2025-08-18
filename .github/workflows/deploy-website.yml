@@ -27,6 +27,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+        
+      - name: Archive artifact
+        if: ${{ exists('dockskope') }}
+        run: tar -cvf dockskope.tar dockskope
       
 
       - name: Deploy to GitHub Pages
