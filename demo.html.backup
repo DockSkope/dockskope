@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DockSkope Demo - Live Container Monitoring</title>
+    <meta name="description" content="Experience DockSkope in action with live container monitoring demo" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      /* Demo Page Specific Styles */
+      .demo-hero {
+        background: var(--gradient-hero);
+        padding: calc(80px + var(--space-4xl)) 0 var(--space-4xl);
+        position: relative;
+        overflow: hidden;
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .demo-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.2) 0%, transparent 50%);
+        pointer-events: none;
+      }
+
+      .demo-hero-content {
+        text-align: center;
+        color: var(--white);
+        position: relative;
+        z-index: 2;
+      }
+
+      .demo-hero h1 {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 800;
+        margin-bottom: var(--space-lg);
+        color: var(--white);
+      }
+
+      .demo-hero p {
+        font-size: 1.25rem;
+        color: rgba(255, 255, 255, 0.95);
+        max-width: 700px;
+        margin: 0 auto var(--space-3xl);
+        line-height: 1.7;
+      }
+
+      .demo-actions {
+        display: flex;
+        gap: var(--space-lg);
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .demo-dashboard {
+        background: var(--white);
+        border-radius: var(--radius-2xl);
+        box-shadow: var(--shadow-2xl);
+        margin: var(--space-4xl) auto;
+        max-width: 1200px;
+        overflow: hidden;
+        border: 1px solid var(--gray-200);
+      }
+
+      .demo-header {
+        background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+        padding: var(--space-2xl);
+        border-bottom: 1px solid var(--gray-200);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .demo-header-left {
+        display: flex;
+        align-items: center;
+        gap: var(--space-lg);
+      }
+
+      .demo-status {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        padding: var(--space-sm) var(--space-md);
+        background: var(--secondary);
+        color: var(--white);
+        border-radius: var(--radius-full);
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      .demo-status::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: var(--white);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+
+      .demo-controls {
+        display: flex;
+        gap: var(--space-sm);
+      }
+
+      .demo-control-btn {
+        padding: var(--space-sm) var(--space-md);
+        border: 1px solid var(--gray-300);
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+      }
+
+      .demo-control-btn:hover {
+        background: var(--gray-50);
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      .demo-content {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        min-height: 600px;
+      }
+
+      .demo-sidebar {
+        background: var(--gray-50);
+        border-right: 1px solid var(--gray-200);
+        padding: var(--space-2xl) 0;
+      }
+
+      .demo-nav-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        padding: var(--space-md) var(--space-2xl);
+        color: var(--gray-600);
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+      }
+
+      .demo-nav-item:hover {
+        background: var(--gray-100);
+        color: var(--primary);
+      }
+
+      .demo-nav-item.active {
+        background: var(--primary);
+        color: var(--white);
+        border-left-color: var(--accent);
+      }
+
+      .demo-main {
+        padding: var(--space-3xl);
+        background: var(--white);
+      }
+
+      .demo-section {
+        display: none;
+      }
+
+      .demo-section.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .demo-section h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: var(--space-2xl);
+        color: var(--gray-800);
+      }
+
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--space-lg);
+        margin-bottom: var(--space-3xl);
+      }
+
+      .metric-card {
+        background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+        padding: var(--space-2xl);
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--gray-200);
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .metric-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary);
+      }
+
+      .metric-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-primary);
+        border-radius: var(--radius-full);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto var(--space-lg);
+        color: var(--white);
+        font-size: 1.5rem;
+      }
+
+      .metric-value {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--primary);
+        margin-bottom: var(--space-sm);
+      }
+
+      .metric-label {
+        font-size: 0.95rem;
+        color: var(--gray-600);
+        font-weight: 500;
+      }
+
+      .chart-container {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-xl);
+        padding: var(--space-2xl);
+        margin-bottom: var(--space-3xl);
+      }
+
+      .chart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--space-2xl);
+      }
+
+      .chart-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--gray-800);
+      }
+
+      .chart-legend {
+        display: flex;
+        gap: var(--space-lg);
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        font-size: 0.875rem;
+        color: var(--gray-600);
+      }
+
+      .legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+      }
+
+      .chart-area {
+        height: 300px;
+        position: relative;
+        background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+      }
+
+      .chart-line {
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+        right: 40px;
+        height: 3px;
+        background: var(--gradient-primary);
+        border-radius: 2px;
+        width: 0%;
+        animation: chartProgress 3s ease-out forwards;
+      }
+
+      .chart-line::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.3), transparent);
+        animation: chartGlow 2s infinite;
+      }
+
+      .containers-list {
+        display: grid;
+        gap: var(--space-md);
+      }
+
+      .container-item {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        display: flex;
+        align-items: center;
+        gap: var(--space-lg);
+        transition: all 0.2s ease;
+      }
+
+      .container-item:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow-md);
+      }
+
+      .container-status {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .container-status.running {
+        background: var(--secondary);
+        animation: pulse 2s infinite;
+      }
+
+      .container-status.stopped {
+        background: var(--gray-400);
+      }
+
+      .container-status.error {
+        background: #ef4444;
+        animation: pulse 2s infinite;
+      }
+
+      .container-info {
+        flex: 1;
+      }
+
+      .container-name {
+        font-weight: 600;
+        color: var(--gray-800);
+        margin-bottom: var(--space-xs);
+      }
+
+      .container-details {
+        font-size: 0.875rem;
+        color: var(--gray-600);
+      }
+
+      .container-actions {
+        display: flex;
+        gap: var(--space-sm);
+      }
+
+      .container-btn {
+        padding: var(--space-sm) var(--space-md);
+        border: 1px solid var(--gray-300);
+        background: var(--white);
+        border-radius: var(--radius-md);
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .container-btn:hover {
+        background: var(--gray-50);
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      .alerts-list {
+        display: grid;
+        gap: var(--space-md);
+      }
+
+      .alert-item {
+        background: var(--white);
+        border-left: 4px solid;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        display: flex;
+        align-items: center;
+        gap: var(--space-lg);
+        transition: all 0.2s ease;
+      }
+
+      .alert-item.critical {
+        border-left-color: #ef4444;
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      }
+
+      .alert-item.warning {
+        border-left-color: #f59e0b;
+        background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      }
+
+      .alert-item.info {
+        border-left-color: var(--primary);
+        background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      }
+
+      .alert-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-full);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+
+      .alert-item.critical .alert-icon {
+        background: #ef4444;
+      }
+
+      .alert-item.warning .alert-icon {
+        background: #f59e0b;
+      }
+
+      .alert-item.info .alert-icon {
+        background: var(--primary);
+      }
+
+      .alert-content {
+        flex: 1;
+      }
+
+      .alert-title {
+        font-weight: 600;
+        color: var(--gray-800);
+        margin-bottom: var(--space-xs);
+      }
+
+      .alert-message {
+        font-size: 0.875rem;
+        color: var(--gray-600);
+      }
+
+      .alert-time {
+        font-size: 0.8rem;
+        color: var(--gray-500);
+        margin-top: var(--space-xs);
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+
+      @keyframes chartProgress {
+        from { width: 0%; }
+        to { width: 85%; }
+      }
+
+      @keyframes chartGlow {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.6; }
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .demo-content {
+          grid-template-columns: 1fr;
+        }
+
+        .demo-sidebar {
+          border-right: none;
+          border-bottom: 1px solid var(--gray-200);
+        }
+
+        .demo-nav-item {
+          padding: var(--space-md);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .demo-hero {
+          padding: calc(80px + var(--space-3xl)) 0 var(--space-3xl);
+        }
+
+        .demo-hero h1 {
+          font-size: 2rem;
+        }
+
+        .demo-hero p {
+          font-size: 1.1rem;
+        }
+
+        .demo-actions {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .demo-header {
+          flex-direction: column;
+          gap: var(--space-lg);
+          text-align: center;
+        }
+
+        .metrics-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .container-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--space-md);
+        }
+
+        .container-actions {
+          width: 100%;
+          justify-content: flex-end;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img src="assets/logo.svg" alt="DockSkope" class="logo" />
+          <span class="logo-text">DockSkope</span>
+        </div>
+        <div class="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="index.html#features" class="nav-link">Features</a>
+          <a href="https://github.com/DockSkope" class="nav-link" target="_blank">GitHub</a>
+          <a href="docs/" class="nav-link">Documentation</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-buttons">
+          <a href="demo.html" class="btn btn-secondary">Try Demo</a>
+          <a href="https://github.com/DockSkope" class="btn btn-outline" target="_blank">Get Started Free</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Demo Hero Section -->
+    <section class="demo-hero">
+      <div class="container">
+        <div class="demo-hero-content">
+          <h1>DockSkope Live Demo</h1>
+          <p>
+            Experience real-time Docker container monitoring in action. Watch as DockSkope tracks 
+            container performance, resource usage, and system health with beautiful, interactive dashboards.
+          </p>
+          <div class="demo-actions">
+            <a href="#dashboard" class="btn btn-primary btn-large">
+              <i class="fas fa-play"></i>
+              Start Demo
+            </a>
+            <a href="index.html" class="btn btn-ghost btn-large">
+              <i class="fas fa-arrow-left"></i>
+              Back to Home
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Dashboard -->
+    <section id="dashboard" class="demo-dashboard">
+      <div class="demo-header">
+        <div class="demo-header-left">
+          <div class="demo-status">
+            Live Demo Running
+          </div>
+          <span style="color: var(--gray-600);">•</span>
+          <span style="color: var(--gray-600); font-size: 0.9rem;">Last updated: <span id="last-update">Just now</span></span>
+        </div>
+        <div class="demo-controls">
+          <button class="demo-control-btn" onclick="refreshDemo()">
+            <i class="fas fa-refresh"></i>
+            Refresh
+          </button>
+          <button class="demo-control-btn" onclick="toggleDemo()">
+            <i class="fas fa-pause"></i>
+            Pause
+          </button>
+        </div>
+      </div>
+
+      <div class="demo-content">
+        <div class="demo-sidebar">
+          <div class="demo-nav-item active" data-tab="overview">
+            <i class="fas fa-tachometer-alt"></i>
+            Overview
+          </div>
+          <div class="demo-nav-item" data-tab="containers">
+            <i class="fas fa-cube"></i>
+            Containers
+          </div>
+          <div class="demo-nav-item" data-tab="metrics">
+            <i class="fas fa-chart-line"></i>
+            Metrics
+          </div>
+          <div class="demo-nav-item" data-tab="alerts">
+            <i class="fas fa-bell"></i>
+            Alerts
+          </div>
+        </div>
+
+        <div class="demo-main">
+          <!-- Overview Tab -->
+          <div class="demo-section active" id="overview">
+            <h2>System Overview</h2>
+            
+            <div class="metrics-grid">
+              <div class="metric-card">
+                <div class="metric-icon">
+                  <i class="fas fa-microchip"></i>
+                </div>
+                <div class="metric-value" id="cpu-usage">24.5%</div>
+                <div class="metric-label">CPU Usage</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-icon">
+                  <i class="fas fa-memory"></i>
+                </div>
+                <div class="metric-value" id="memory-usage">1.2GB</div>
+                <div class="metric-label">Memory Usage</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-icon">
+                  <i class="fas fa-hdd"></i>
+                </div>
+                <div class="metric-value" id="disk-usage">67%</div>
+                <div class="metric-label">Disk Usage</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-icon">
+                  <i class="fas fa-cube"></i>
+                </div>
+                <div class="metric-value" id="active-containers">8</div>
+                <div class="metric-label">Active Containers</div>
+              </div>
+            </div>
+
+            <div class="chart-container">
+              <div class="chart-header">
+                <div class="chart-title">Resource Usage Over Time</div>
+                <div class="chart-legend">
+                  <div class="legend-item">
+                    <div class="legend-color" style="background: var(--primary);"></div>
+                    CPU
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-color" style="background: var(--secondary);"></div>
+                    Memory
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-color" style="background: var(--accent);"></div>
+                    Disk
+                  </div>
+                </div>
+              </div>
+              <div class="chart-area">
+                <div class="chart-line"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Containers Tab -->
+          <div class="demo-section" id="containers">
+            <h2>Container Management</h2>
+            
+            <div class="containers-list">
+              <div class="container-item">
+                <div class="container-status running"></div>
+                <div class="container-info">
+                  <div class="container-name">nginx-web-server</div>
+                  <div class="container-details">Image: nginx:latest • Port: 80:80 • Uptime: 2h 15m</div>
+                </div>
+                <div class="container-actions">
+                  <button class="container-btn">Logs</button>
+                  <button class="container-btn">Shell</button>
+                  <button class="container-btn">Stop</button>
+                </div>
+              </div>
+              
+              <div class="container-item">
+                <div class="container-status running"></div>
+                <div class="container-info">
+                  <div class="container-name">postgres-database</div>
+                  <div class="container-details">Image: postgres:13 • Port: 5432:5432 • Uptime: 1d 4h</div>
+                </div>
+                <div class="container-actions">
+                  <button class="container-btn">Logs</button>
+                  <button class="container-btn">Shell</button>
+                  <button class="container-btn">Stop</button>
+                </div>
+              </div>
+              
+              <div class="container-item">
+                <div class="container-status running"></div>
+                <div class="container-info">
+                  <div class="container-name">redis-cache</div>
+                  <div class="container-details">Image: redis:6 • Port: 6379:6379 • Uptime: 5h 30m</div>
+                </div>
+                <div class="container-actions">
+                  <button class="container-btn">Logs</button>
+                  <button class="container-btn">Shell</button>
+                  <button class="container-btn">Stop</button>
+                </div>
+              </div>
+              
+              <div class="container-item">
+                <div class="container-status stopped"></div>
+                <div class="container-info">
+                  <div class="container-name">backup-service</div>
+                  <div class="container-details">Image: backup:latest • Port: 8080:8080 • Stopped 30m ago</div>
+                </div>
+                <div class="container-actions">
+                  <button class="container-btn">Logs</button>
+                  <button class="container-btn">Start</button>
+                  <button class="container-btn">Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metrics Tab -->
+          <div class="demo-section" id="metrics">
+            <h2>Performance Metrics</h2>
+            
+            <div class="metrics-grid">
+              <div class="metric-card">
+                <div class="metric-icon">
+                  <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="metric-value">2.1GB</div>
+                <div class="metric-label">Network I/O</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-icon">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <div class="metric-value">99.8%</div>
+                <div class="metric-label">Uptime</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="metric-value">45ms</div>
+                <div class="metric-label">Response Time</div>
+              </div>
+              
+              <div class="metric-card">
+                <div class="metric-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="metric-value">1.2K</div>
+                <div class="metric-label">Active Users</div>
+              </div>
+            </div>
+
+            <div class="chart-container">
+              <div class="chart-header">
+                <div class="chart-title">Network Traffic</div>
+                <div class="chart-legend">
+                  <div class="legend-item">
+                    <div class="legend-color" style="background: var(--primary);"></div>
+                    Inbound
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-color" style="background: var(--secondary);"></div>
+                    Outbound
+                  </div>
+                </div>
+              </div>
+              <div class="chart-area">
+                <div class="chart-line"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alerts Tab -->
+          <div class="demo-section" id="alerts">
+            <h2>System Alerts</h2>
+            
+            <div class="alerts-list">
+              <div class="alert-item warning">
+                <div class="alert-icon">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="alert-content">
+                  <div class="alert-title">High Memory Usage</div>
+                  <div class="alert-message">Container 'nginx-web-server' is using 85% of allocated memory</div>
+                  <div class="alert-time">2 minutes ago</div>
+                </div>
+              </div>
+              
+              <div class="alert-item info">
+                <div class="alert-icon">
+                  <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="alert-content">
+                  <div class="alert-title">Backup Completed</div>
+                  <div class="alert-message">Database backup completed successfully</div>
+                  <div class="alert-time">15 minutes ago</div>
+                </div>
+              </div>
+              
+              <div class="alert-item info">
+                <div class="alert-icon">
+                  <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="alert-content">
+                  <div class="alert-title">Container Started</div>
+                  <div class="alert-message">Container 'redis-cache' has been started</div>
+                  <div class="alert-time">1 hour ago</div>
+                </div>
+              </div>
+              
+              <div class="alert-item warning">
+                <div class="alert-icon">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="alert-content">
+                  <div class="alert-title">Disk Space Warning</div>
+                  <div class="alert-message">Disk usage is approaching 80% threshold</div>
+                  <div class="alert-time">3 hours ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <img src="assets/logo.svg" alt="DockSkope" class="logo" />
+              <span class="logo-text">DockSkope</span>
+            </div>
+            <p>
+              Modern Docker container monitoring and alerting system. 
+              Monitor your infrastructure with style and precision.
+            </p>
+            <div class="social-links">
+              <a href="https://github.com/DockSkope" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://twitter.com/dockskope" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://discord.gg/dockskope" target="_blank">
+                <i class="fab fa-discord"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="index.html#features">Features</a></li>
+              <li><a href="demo.html">Live Demo</a></li>
+              <li><a href="docs/">Documentation</a></li>
+              <li><a href="https://github.com/DockSkope" target="_blank">GitHub</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="docs/installation.html">Installation</a></li>
+              <li><a href="docs/configuration.html">Configuration</a></li>
+              <li><a href="docs/api.html">API Reference</a></li>
+              <li><a href="docs/faq.html">FAQ</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Community</h4>
+            <ul>
+              <li><a href="https://github.com/DockSkope/issues" target="_blank">Issues</a></li>
+              <li><a href="https://github.com/DockSkope/discussions" target="_blank">Discussions</a></li>
+              <li><a href="https://discord.gg/dockskope" target="_blank">Discord</a></li>
+              <li><a href="mailto:hello@dockskope.com">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2025 DockSkope. All rights reserved.</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Demo functionality
+      let demoRunning = true;
+      let updateInterval;
+
+      function initDemo() {
+        // Initialize demo with live data updates
+        updateDemo();
+        updateInterval = setInterval(updateDemo, 5000); // Update every 5 seconds
+        
+        // Setup navigation
+        setupNavigation();
+      }
+
+      function updateDemo() {
+        if (!demoRunning) return;
+        
+        // Simulate live data updates
+        const cpuUsage = Math.floor(Math.random() * 30) + 15; // 15-45%
+        const memoryUsage = (Math.random() * 0.5 + 0.8).toFixed(1); // 0.8-1.3GB
+        const diskUsage = Math.floor(Math.random() * 20) + 60; // 60-80%
+        const activeContainers = Math.floor(Math.random() * 3) + 7; // 7-10
+        
+        document.getElementById('cpu-usage').textContent = cpuUsage + '%';
+        document.getElementById('memory-usage').textContent = memoryUsage + 'GB';
+        document.getElementById('disk-usage').textContent = diskUsage + '%';
+        document.getElementById('active-containers').textContent = activeContainers;
+        
+        // Update timestamp
+        const now = new Date();
+        document.getElementById('last-update').textContent = now.toLocaleTimeString();
+      }
+
+      function setupNavigation() {
+        const navItems = document.querySelectorAll('.demo-nav-item');
+        const sections = document.querySelectorAll('.demo-section');
+        
+        navItems.forEach(item => {
+          item.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            
+            // Update active states
+            navItems.forEach(nav => nav.classList.remove('active'));
+            sections.forEach(section => section.classList.remove('active'));
+            
+            this.classList.add('active');
+            document.getElementById(targetTab).classList.add('active');
+          });
+        });
+      }
+
+      function refreshDemo() {
+        updateDemo();
+        // Add visual feedback
+        const btn = event.target.closest('.demo-control-btn');
+        btn.innerHTML = '<i class="fas fa-check"></i> Refreshed';
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-refresh"></i> Refresh';
+        }, 1000);
+      }
+
+      function toggleDemo() {
+        demoRunning = !demoRunning;
+        const btn = event.target.closest('.demo-control-btn');
+        
+        if (demoRunning) {
+          btn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+          updateInterval = setInterval(updateDemo, 5000);
+        } else {
+          btn.innerHTML = '<i class="fas fa-play"></i> Resume';
+          clearInterval(updateInterval);
+        }
+      }
+
+      // Initialize demo when page loads
+      document.addEventListener('DOMContentLoaded', initDemo);
+    </script>
+  </body>
+</html>
