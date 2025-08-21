@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Installation - DockScope Documentation</title>
+    <title>Installation - DockSkope Documentation</title>
     <link
       rel="stylesheet"
       href="../styles.css"
@@ -42,10 +42,10 @@
         <div class="nav-logo">
           <img
             src="../assets/logo.svg"
-            alt="DockScope"
+            alt="DockSkope"
             class="logo"
           />
-          <span class="logo-text">DockScope</span>
+          <span class="logo-text">DockSkope</span>
         </div>
         <div
           class="nav-menu"
@@ -62,7 +62,7 @@
             >Features</a
           >
           <a
-            href="https://github.com/GovindSingh9447/DockScope"
+            href="https://github.com/DockSkope"
             target="_blank"
             class="nav-link"
             >GitHub</a
@@ -195,7 +195,7 @@
         <div class="docs-welcome">
           <h1>Installation Guide</h1>
           <p>
-            Follow this comprehensive guide to install DockScope on your system.
+            Follow this comprehensive guide to install DockSkope on your system.
             We support multiple installation methods to suit your needs.
           </p>
 
@@ -226,27 +226,27 @@
 
           <h3>1. Docker Compose (Recommended)</h3>
           <p>
-            This is the easiest way to get started with DockScope. It sets up
+            This is the easiest way to get started with DockSkope. It sets up
             all components automatically.
           </p>
 
           <div class="docs-alert success">
-            <strong>Quick Start:</strong> Run these commands to get DockScope up
+            <strong>Quick Start:</strong> Run these commands to get DockSkope up
             and running in minutes.
           </div>
 
           <pre><code># Clone the repository
-git clone https://github.com/GovindSingh9447/DockScope.git
-cd DockScope
+git clone https://github.com/DockSkope.git
+cd DockSkope
 
 # Copy environment file
 cp deployment/production.env.example deployment/production.env
 
-# Start DockScope
+# Start DockSkope
 docker-compose -f docker-compose.production.yml up -d</code></pre>
 
           <p>
-            After running these commands, DockScope will be available at
+            After running these commands, DockSkope will be available at
             <code>http://localhost:3000</code>.
           </p>
 
@@ -264,10 +264,10 @@ cd backend
 go mod download
 
 # Build the backend
-go build -o dockscope-backend
+go build -o dockskope-backend
 
 # Run the backend
-./dockscope-backend</code></pre>
+./dockskope-backend</code></pre>
 
           <h4>Frontend Installation</h4>
           <pre><code># Navigate to frontend directory
@@ -290,10 +290,10 @@ cd agent
 go mod download
 
 # Build the agent
-go build -o dockscope-agent
+go build -o dockskope-agent
 
 # Run the agent
-./dockscope-agent</code></pre>
+./dockskope-agent</code></pre>
 
           <h3>3. Using the Setup Script</h3>
           <p>
@@ -302,7 +302,7 @@ go build -o dockscope-agent
           </p>
 
           <pre><code># Download the setup script
-curl -fsSL https://raw.githubusercontent.com/GovindSingh9447/DockScope/main/setup.sh -o setup.sh
+curl -fsSL https://raw.githubusercontent.com/DockSkope/DockSkope/main/setup.sh -o setup.sh
 
 # Make it executable
 chmod +x setup.sh
@@ -312,7 +312,7 @@ chmod +x setup.sh
 
           <h2>Configuration</h2>
           <p>
-            After installation, you'll need to configure DockScope for your
+            After installation, you'll need to configure DockSkope for your
             environment.
           </p>
 
@@ -366,7 +366,7 @@ chmod +x setup.sh
 
           <h3>Database Setup</h3>
           <p>
-            DockScope uses InfluxDB for time-series data storage. The setup
+            DockSkope uses InfluxDB for time-series data storage. The setup
             script will create the necessary databases automatically.
           </p>
 
@@ -408,7 +408,7 @@ chmod +x setup.sh
 
           <div class="docs-alert success">
             <strong>Congratulations!</strong> You've successfully installed
-            DockScope. The web interface should be available at
+            DockSkope. The web interface should be available at
             <code>http://localhost:3000</code>.
           </div>
 
@@ -441,10 +441,10 @@ chmod +x setup.sh
             <div class="footer-logo">
               <img
                 src="../assets/logo.svg"
-                alt="DockScope"
+                alt="DockSkope"
                 class="logo"
               />
-              <span class="logo-text">DockScope</span>
+              <span class="logo-text">DockSkope</span>
             </div>
             <p>
               Lightweight, agent-based Docker container monitoring and alerting
@@ -452,7 +452,7 @@ chmod +x setup.sh
             </p>
             <div class="social-links">
               <a
-                href="https://github.com/GovindSingh9447/DockScope"
+                href="https://github.com/DockSkope"
                 target="_blank"
               >
                 <i class="fab fa-github"></i>
@@ -481,7 +481,7 @@ chmod +x setup.sh
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; 2025 DockScope. All rights reserved.</p>
+          <p>&copy; 2025 DockSkope. All rights reserved.</p>
         </div>
       </div>
     </footer>

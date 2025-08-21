@@ -1,8 +1,8 @@
-# 🐳 DockScope Website - Project Summary
+# 🐳 DockSkope Website - Project Summary
 
 ## 📋 Overview
 
-I've created a complete, professional website for your DockScope Docker container monitoring application. The website is designed to help you launch DockScope as a commercial product with a modern, responsive design that showcases your application's capabilities.
+I've created a complete, professional website for your DockSkope Docker container monitoring application. The website is designed to help you launch DockSkope as a commercial product with a modern, responsive design that showcases your application's capabilities.
 
 ## 🎯 What's Been Created
 
@@ -15,7 +15,7 @@ website/
 ├── styles.css              # Complete CSS styling
 ├── script.js               # Interactive JavaScript
 ├── assets/
-│   ├── logo.svg            # Custom DockScope logo
+│   ├── logo.svg            # Custom DockSkope logo
 │   └── favicon.svg         # Website favicon
 ├── deploy.sh               # Deployment automation script
 ├── package.json            # Node.js configuration
@@ -190,7 +190,7 @@ scp -r website/* user@your-server:/var/www/html/
 
 ### **Product Integration**
 
-1. **Connect demo page** to actual DockScope instance
+1. **Connect demo page** to actual DockSkope instance
 2. **Add signup/login** functionality
 3. **Implement payment processing**
 4. **Create user dashboard**
@@ -263,7 +263,7 @@ scp -r website/* user@your-server:/var/www/html/
 
 ## 🚀 Ready to Launch!
 
-Your DockScope website is now ready for production. The website effectively communicates your product's value proposition, showcases its features, and provides multiple paths for potential customers to engage with your product.
+Your DockSkope website is now ready for production. The website effectively communicates your product's value proposition, showcases its features, and provides multiple paths for potential customers to engage with your product.
 
 **Key Strengths:**
 

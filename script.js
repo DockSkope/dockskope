@@ -456,7 +456,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize hero visual animations
   setTimeout(animateHeroVisual, 500);
 
-  console.log('DockScope website loaded successfully! 🐳');
+  console.log('DockSkope website loaded successfully! 🐳');
 });
 
 // Add some fun easter eggs
@@ -474,7 +474,7 @@ document.addEventListener('keydown', function (e) {
 
 // Add console styling
 console.log(
-  '%c🐳 Welcome to DockScope!',
+  '%c🐳 Welcome to DockSkope!',
   'color: #3b82f6; font-size: 20px; font-weight: bold;'
 );
 console.log(

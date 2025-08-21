@@ -1,7 +1,7 @@
 {
-  "name": "dockscope-website",
+  "name": "dockskope-website",
   "version": "1.0.0",
-  "description": "Official website for DockScope - Docker container monitoring and alerting system",
+  "description": "Official website for DockSkope - Docker container monitoring and alerting system",
   "main": "index.html",
   "scripts": {
     "dev": "python3 -m http.server 8000 || python -m http.server 8000 || php -S localhost:8000 || npx http-server -p 8000",
@@ -30,9 +30,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GovindSingh9447/DockScope.git"
+    "url": "https://github.com/DockSkope.git"
   },
-  "homepage": "https://dockscope.com",
+  "homepage": "https://dockskope.com",
   "devDependencies": {
     "eslint": "^8.53.0",
     "stylelint": "^15.11.0",

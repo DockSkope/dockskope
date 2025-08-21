@@ -1,6 +1,6 @@
-# 🐳 DockScope Website
+# 🐳 DockSkope Website
 
-A modern, responsive website for the DockScope Docker container monitoring and alerting system.
+A modern, responsive website for the DockSkope Docker container monitoring and alerting system.
 
 ## 🚀 Features
 
@@ -19,7 +19,7 @@ website/
 ├── styles.css          # CSS styles
 ├── script.js           # JavaScript functionality
 ├── assets/             # Images and icons
-│   ├── logo.svg        # DockScope logo
+│   ├── logo.svg        # DockSkope logo
 │   └── favicon.svg     # Favicon
 └── README.md           # This file
 ```
@@ -85,11 +85,12 @@ website/
    ```
 
 2. **Configure web server**
+
    ```nginx
    # Nginx configuration example
    server {
        listen 80;
-       server_name dockscope.com;
+       server_name dockskope.com;
        root /var/www/html;
        index index.html;
 
@@ -219,14 +220,14 @@ For website-related issues:
 - Validate HTML and CSS using online validators
 - Test on different devices and browsers
 
-For DockScope application support:
+For DockSkope application support:
 
-- Visit the main repository: https://github.com/GovindSingh9447/DockScope
+- Visit the main repository: https://github.com/DockSkope
 - Check the main README for application documentation
 
 ## 📄 License
 
-This website is part of the DockScope project and follows the same MIT license.
+This website is part of the DockSkope project and follows the same MIT license.
 
 ---
 

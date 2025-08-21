@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# DockScope Website Deployment Script
+# DockSkope Website Deployment Script
 # This script helps deploy the website to various platforms
 
 set -e
@@ -178,26 +178,26 @@ deploy_server() {
     print_status "Deploying to server: $server_host:$server_path"
     
     # Create deployment package
-    tar -czf dockscope-website.tar.gz -C dist .
+    tar -czf dockskope-website.tar.gz -C dist .
     
     # Upload to server
     if [[ -n "$server_user" ]]; then
-        scp dockscope-website.tar.gz "$server_user@$server_host:/tmp/"
-        ssh "$server_user@$server_host" "cd $server_path && tar -xzf /tmp/dockscope-website.tar.gz && rm /tmp/dockscope-website.tar.gz"
+        scp dockskope-website.tar.gz "$server_user@$server_host:/tmp/"
+        ssh "$server_user@$server_host" "cd $server_path && tar -xzf /tmp/dockskope-website.tar.gz && rm /tmp/dockskope-website.tar.gz"
     else
-        scp dockscope-website.tar.gz "$server_host:/tmp/"
-        ssh "$server_host" "cd $server_path && tar -xzf /tmp/dockscope-website.tar.gz && rm /tmp/dockscope-website.tar.gz"
+        scp dockskope-website.tar.gz "$server_host:/tmp/"
+        ssh "$server_host" "cd $server_path && tar -xzf /tmp/dockskope-website.tar.gz && rm /tmp/dockskope-website.tar.gz"
     fi
     
     # Clean up
-    rm dockscope-website.tar.gz
+    rm dockskope-website.tar.gz
     
     print_success "Deployed to server successfully!"
 }
 
 # Function to show help
 show_help() {
-    echo "🐳 DockScope Website Deployment Script"
+    echo "🐳 DockSkope Website Deployment Script"
     echo ""
     echo "Usage: $0 [COMMAND] [OPTIONS]"
     echo ""

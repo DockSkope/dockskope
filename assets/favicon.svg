@@ -23,6 +23,6 @@
     <circle cx="11" cy="21" r="1" fill="#0066cc"/>
   </g>
   
-  <!-- DockScope branding -->
+      <!-- DockSkope branding -->
   <text x="16" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="4" font-weight="bold" fill="#ffffff">DS</text>
 </svg> 
