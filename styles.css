@@ -1875,9 +1875,9 @@ section {
 
 .badge {
   display: inline-block;
-  padding: var(--space-xs) var(--space-sm);
+  padding: 2px 6px;
   border-radius: var(--radius-sm);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.025em;
@@ -1972,57 +1972,82 @@ section {
 
 /* Feature Card Category Styling */
 .security-feature {
-  border-left: 4px solid #ef4444;
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(220, 38, 38, 0.05));
+  border-left: 3px solid #ef4444;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.03), rgba(220, 38, 38, 0.03));
 }
 
 .agent-feature {
-  border-left: 4px solid #06b6d4;
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(8, 145, 178, 0.05));
+  border-left: 3px solid #06b6d4;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.03), rgba(8, 145, 178, 0.03));
 }
 
 .realtime-feature {
-  border-left: 4px solid #ec4899;
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(219, 39, 119, 0.05));
+  border-left: 3px solid #ec4899;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.03), rgba(219, 39, 119, 0.03));
 }
 
 .analytics-feature {
-  border-left: 4px solid #6366f1;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(79, 70, 229, 0.05));
+  border-left: 3px solid #6366f1;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.03), rgba(79, 70, 229, 0.03));
 }
 
 .dev-feature {
-  border-left: 4px solid #14b8a6;
-  background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(13, 148, 136, 0.05));
+  border-left: 3px solid #14b8a6;
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.03), rgba(13, 148, 136, 0.03));
 }
 
 .enterprise-feature {
-  border-left: 4px solid #8b5cf6;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(124, 58, 237, 0.05));
+  border-left: 3px solid #8b5cf6;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.03), rgba(124, 58, 237, 0.03));
 }
 
 .container-feature {
-  border-left: 4px solid #0ea5e9;
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.05), rgba(2, 132, 199, 0.05));
+  border-left: 3px solid #0ea5e9;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.03), rgba(2, 132, 199, 0.03));
 }
 
 .logging-feature {
-  border-left: 4px solid #6b7280;
-  background: linear-gradient(135deg, rgba(107, 114, 128, 0.05), rgba(75, 85, 99, 0.05));
+  border-left: 3px solid #6b7280;
+  background: linear-gradient(135deg, rgba(107, 114, 128, 0.03), rgba(75, 85, 99, 0.03));
+}
+
+/* Compact Feature Cards */
+.feature-card {
+  padding: var(--space-lg) var(--space-md);
+  min-height: auto;
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-sm);
+  line-height: 1.3;
+}
+
+.feature-card p {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin-bottom: var(--space-sm);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--space-md);
+  font-size: 1.25rem;
 }
 
 /* Enhanced Feature Card Hover Effects */
 .feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.12);
 }
 
 .feature-card:hover .feature-icon {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .feature-card:hover .badge {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 /* Feature Category Icons */
@@ -2100,7 +2125,7 @@ section {
 .pricing-card {
   background: white;
   border-radius: var(--radius-lg);
-  padding: var(--space-2xl);
+  padding: var(--space-xl);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   position: relative;
@@ -2138,19 +2163,19 @@ section {
 
 .pricing-header {
   text-align: center;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-lg);
 }
 
 .plan-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto var(--space-lg);
+  width: 60px;
+  height: 60px;
+  margin: 0 auto var(--space-md);
   background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: white;
 }
 
@@ -2194,7 +2219,7 @@ section {
 }
 
 .pricing-features {
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-lg);
 }
 
 .pricing-features ul {
@@ -2336,7 +2361,7 @@ section {
 .tech-category {
   background: white;
   border-radius: var(--radius-lg);
-  padding: var(--space-2xl);
+  padding: var(--space-lg);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border: 1px solid #e2e8f0;
@@ -2349,21 +2374,21 @@ section {
 
 .tech-category-header {
   text-align: center;
-  margin-bottom: var(--space-2xl);
-  padding-bottom: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
   border-bottom: 2px solid #f1f5f9;
 }
 
 .tech-category-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto var(--space-lg);
+  width: 60px;
+  height: 60px;
+  margin: 0 auto var(--space-md);
   background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: white;
 }
 
