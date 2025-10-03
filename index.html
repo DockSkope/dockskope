@@ -83,6 +83,16 @@
             >Features</a
           >
           <a
+            href="#tech-stack"
+            class="nav-link"
+            >Technology</a
+          >
+          <a
+            href="#pricing"
+            class="nav-link"
+            >Pricing</a
+          >
+          <a
             href="https://github.com/DockSkope"
             class="nav-link"
             target="_blank"
@@ -568,71 +578,570 @@
         </div>
 
         <div class="features-grid">
-          <div class="feature-card">
+          <!-- Security & Authentication Features -->
+          <div class="feature-card security-feature">
+            <div class="feature-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+            <h3>JWT Authentication</h3>
+            <p>
+              Secure, stateless authentication system with role-based access control. 
+              Complete audit trail of all user actions.
+            </p>
+            <div class="feature-badges">
+              <span class="badge badge-security">Security</span>
+              <span class="badge badge-enterprise">Enterprise</span>
+            </div>
+          </div>
+
+          <div class="feature-card security-feature">
+            <div class="feature-icon">
+              <i class="fas fa-user-shield"></i>
+            </div>
+            <h3>Role-Based Access</h3>
+            <p>
+              Granular permissions with Admin, DevOps, Viewer, and User roles. 
+              Real-time access logging for complete security audit.
+            </p>
+            <div class="feature-badges">
+              <span class="badge badge-security">Security</span>
+              <span class="badge badge-enterprise">Enterprise</span>
+            </div>
+          </div>
+
+          <!-- Multi-Agent Architecture -->
+          <div class="feature-card agent-feature">
+            <div class="feature-icon">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <h3>Distributed Agent System</h3>
+            <p>
+              Lightweight agents monitor containers across multiple hosts. 
+              Centralized data collection with offline buffering capabilities.
+            </p>
+            <div class="feature-badges">
+              <span class="badge badge-architecture">Architecture</span>
+              <span class="badge badge-scalable">Scalable</span>
+            </div>
+          </div>
+
+          <div class="feature-card agent-feature">
+            <div class="feature-icon">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <h3>Agent Health Monitoring</h3>
+            <p>
+              Real-time agent status monitoring with automatic reconnection. 
+              Offline data buffering ensures no data loss during network issues.
+            </p>
+            <div class="feature-badges">
+              <span class="badge badge-reliability">Reliability</span>
+              <span class="badge badge-monitoring">Monitoring</span>
+            </div>
+          </div>
+
+          <!-- Real-time Capabilities -->
+          <div class="feature-card realtime-feature">
             <div class="feature-icon">
               <i class="fas fa-chart-line"></i>
             </div>
-            <h3>Real-time Monitoring</h3>
+            <h3>Live Dashboard Updates</h3>
             <p>
-              Monitor CPU, memory, disk, and network usage in real-time with
-              beautiful charts and graphs.
+              Real-time metrics streaming with WebSocket support. 
+              Instant updates for CPU, memory, disk, and network usage.
             </p>
+            <div class="feature-badges">
+              <span class="badge badge-realtime">Real-time</span>
+              <span class="badge badge-performance">Performance</span>
+            </div>
           </div>
 
-          <div class="feature-card">
+          <div class="feature-card realtime-feature">
             <div class="feature-icon">
               <i class="fas fa-bell"></i>
             </div>
-            <h3>Intelligent Alerting</h3>
+            <h3>Instant Alert Notifications</h3>
             <p>
-              Set up custom alert rules with email notifications to stay
-              informed about your infrastructure.
+              Auto Alert Monitor with configurable intervals. 
+              Immediate notifications via email and webhooks.
             </p>
+            <div class="feature-badges">
+              <span class="badge badge-realtime">Real-time</span>
+              <span class="badge badge-alerts">Alerts</span>
+            </div>
           </div>
 
-          <div class="feature-card">
+          <!-- Advanced Analytics -->
+          <div class="feature-card analytics-feature">
+            <div class="feature-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <h3>Advanced Analytics</h3>
+            <p>
+              Historical data with InfluxDB integration. 
+              Custom dashboards with exportable PDF reports.
+            </p>
+            <div class="feature-badges">
+              <span class="badge badge-analytics">Analytics</span>
+              <span class="badge badge-enterprise">Enterprise</span>
+            </div>
+          </div>
+
+          <div class="feature-card analytics-feature">
+            <div class="feature-icon">
+              <i class="fas fa-download"></i>
+            </div>
+            <h3>Export & Reporting</h3>
+            <p>
+              Generate comprehensive reports in PDF format. 
+              Export data for external analysis and compliance.
+            </p>
+            <div class="feature-badges">
+              <span class="badge badge-analytics">Analytics</span>
+              <span class="badge badge-compliance">Compliance</span>
+            </div>
+          </div>
+
+          <!-- Developer Experience -->
+          <div class="feature-card dev-feature">
+            <div class="feature-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>RESTful API</h3>
+            <p>
+              Complete API for integration with existing tools. 
+              Comprehensive documentation with interactive examples.
+            </p>
+            <div class="feature-badges">
+              <span class="badge badge-developer">Developer</span>
+              <span class="badge badge-integration">Integration</span>
+            </div>
+          </div>
+
+          <div class="feature-card dev-feature">
+            <div class="feature-icon">
+              <i class="fas fa-terminal"></i>
+            </div>
+            <h3>Container Shell Access</h3>
+            <p>
+              Interactive terminal access to containers. 
+              Real-time log streaming with advanced filtering.
+            </p>
+            <div class="feature-badges">
+              <span class="badge badge-developer">Developer</span>
+              <span class="badge badge-debugging">Debugging</span>
+            </div>
+          </div>
+
+          <!-- Enterprise Features -->
+          <div class="feature-card enterprise-feature">
+            <div class="feature-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>User Management</h3>
+            <p>
+              Complete user lifecycle management with role assignment. 
+              SMTP configuration for custom email servers.
+            </p>
+            <div class="feature-badges">
+              <span class="badge badge-enterprise">Enterprise</span>
+              <span class="badge badge-management">Management</span>
+            </div>
+          </div>
+
+          <div class="feature-card enterprise-feature">
+            <div class="feature-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3>Database Flexibility</h3>
+            <p>
+              Support for PostgreSQL and SQLite databases. 
+              Scalable architecture handling unlimited containers.
+            </p>
+            <div class="feature-badges">
+              <span class="badge badge-enterprise">Enterprise</span>
+              <span class="badge badge-scalable">Scalable</span>
+            </div>
+          </div>
+
+          <!-- Container Management -->
+          <div class="feature-card container-feature">
             <div class="feature-icon">
               <i class="fas fa-cube"></i>
             </div>
             <h3>Container Management</h3>
             <p>
               Start, stop, restart, and manage containers directly from the web
-              interface.
+              interface. Real-time status updates and health monitoring.
             </p>
+            <div class="feature-badges">
+              <span class="badge badge-management">Management</span>
+              <span class="badge badge-docker">Docker</span>
+            </div>
           </div>
 
-          <div class="feature-card">
+          <div class="feature-card container-feature">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Security Scanning</h3>
+            <p>
+              Built-in security scanning to identify vulnerabilities in your
+              container images and running containers with compliance reporting.
+            </p>
+            <div class="feature-badges">
+              <span class="badge badge-security">Security</span>
+              <span class="badge badge-compliance">Compliance</span>
+            </div>
+          </div>
+
+          <!-- Logging & Monitoring -->
+          <div class="feature-card logging-feature">
             <div class="feature-icon">
               <i class="fas fa-file-alt"></i>
             </div>
             <h3>Log Aggregation</h3>
             <p>
               Centralized log viewing and search capabilities across all your
-              containers.
+              containers with real-time streaming and filtering.
             </p>
+            <div class="feature-badges">
+              <span class="badge badge-logging">Logging</span>
+              <span class="badge badge-monitoring">Monitoring</span>
+            </div>
           </div>
 
-          <div class="feature-card">
+          <div class="feature-card logging-feature">
             <div class="feature-icon">
-              <i class="fas fa-server"></i>
+              <i class="fas fa-search"></i>
             </div>
-            <h3>Multi-host Support</h3>
+            <h3>Advanced Log Search</h3>
             <p>
-              Monitor containers across multiple Docker hosts from a single
-              dashboard.
+              Powerful log search with regex support, time-based filtering, 
+              and export capabilities for troubleshooting and analysis.
             </p>
+            <div class="feature-badges">
+              <span class="badge badge-logging">Logging</span>
+              <span class="badge badge-debugging">Debugging</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="tech-stack" id="tech-stack">
+      <div class="container">
+        <div class="section-header">
+          <h2>Built with Modern Technology</h2>
+          <p>
+            DockSkope leverages cutting-edge technologies to deliver enterprise-grade 
+            container monitoring with exceptional performance and reliability.
+          </p>
+        </div>
+
+        <div class="tech-grid">
+          <!-- Frontend Technologies -->
+          <div class="tech-category">
+            <div class="tech-category-header">
+              <div class="tech-category-icon">
+                <i class="fab fa-react"></i>
+              </div>
+              <h3>Frontend</h3>
+              <p>Modern, responsive user interface</p>
+            </div>
+            <div class="tech-items">
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <i class="fab fa-react"></i>
+                </div>
+                <div class="tech-info">
+                  <h4>React 18</h4>
+                  <p>Component-based UI with hooks</p>
+                </div>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <i class="fab fa-js-square"></i>
+                </div>
+                <div class="tech-info">
+                  <h4>Vite</h4>
+                  <p>Lightning-fast build tool</p>
+                </div>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <i class="fas fa-palette"></i>
+                </div>
+                <div class="tech-info">
+                  <h4>TailwindCSS</h4>
+                  <p>Utility-first CSS framework</p>
+                </div>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="tech-info">
+                  <h4>Recharts</h4>
+                  <p>Beautiful data visualizations</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-code"></i>
+          <!-- Backend Technologies -->
+          <div class="tech-category">
+            <div class="tech-category-header">
+              <div class="tech-category-icon">
+                <i class="fas fa-server"></i>
+              </div>
+              <h3>Backend</h3>
+              <p>High-performance server architecture</p>
             </div>
-            <h3>RESTful API</h3>
-            <p>
-              Integrate DockSkope with your existing tools and workflows using
-              our comprehensive API.
-            </p>
+            <div class="tech-items">
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <i class="fas fa-code"></i>
+                </div>
+                <div class="tech-info">
+                  <h4>Go</h4>
+                  <p>Concurrent, fast, and reliable</p>
+                </div>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <i class="fas fa-database"></i>
+                </div>
+                <div class="tech-info">
+                  <h4>PostgreSQL</h4>
+                  <p>Enterprise-grade database</p>
+                </div>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="tech-info">
+                  <h4>InfluxDB</h4>
+                  <p>Time-series data storage</p>
+                </div>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <i class="fas fa-lock"></i>
+                </div>
+                <div class="tech-info">
+                  <h4>JWT</h4>
+                  <p>Secure authentication</p>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- DevOps & Infrastructure -->
+          <div class="tech-category">
+            <div class="tech-category-header">
+              <div class="tech-category-icon">
+                <i class="fab fa-docker"></i>
+              </div>
+              <h3>Infrastructure</h3>
+              <p>Container-native and cloud-ready</p>
+            </div>
+            <div class="tech-items">
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <i class="fab fa-docker"></i>
+                </div>
+                <div class="tech-info">
+                  <h4>Docker</h4>
+                  <p>Container runtime integration</p>
+                </div>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <i class="fas fa-cloud"></i>
+                </div>
+                <div class="tech-info">
+                  <h4>Docker Compose</h4>
+                  <p>Easy deployment and orchestration</p>
+                </div>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <i class="fab fa-github"></i>
+                </div>
+                <div class="tech-info">
+                  <h4>GitHub Actions</h4>
+                  <p>Automated CI/CD pipeline</p>
+                </div>
+              </div>
+              <div class="tech-item">
+                <div class="tech-icon">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="tech-info">
+                  <h4>Security Scanning</h4>
+                  <p>Container vulnerability detection</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-highlights">
+          <div class="tech-highlight">
+            <div class="highlight-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h4>High Performance</h4>
+            <p>Built with Go for exceptional speed and concurrency</p>
+          </div>
+          <div class="tech-highlight">
+            <div class="highlight-icon">
+              <i class="fas fa-expand-arrows-alt"></i>
+            </div>
+            <h4>Scalable Architecture</h4>
+            <p>Distributed agent system scales with your infrastructure</p>
+          </div>
+          <div class="tech-highlight">
+            <div class="highlight-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h4>Responsive Design</h4>
+            <p>Works perfectly on desktop, tablet, and mobile devices</p>
+          </div>
+          <div class="tech-highlight">
+            <div class="highlight-icon">
+              <i class="fas fa-plug"></i>
+            </div>
+            <h4>API-First</h4>
+            <p>Complete RESTful API for seamless integrations</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <h2>Simple, Transparent Pricing</h2>
+          <p>
+            Choose the plan that fits your Docker monitoring needs. 
+            All plans include our core features with no hidden costs.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Community Plan -->
+          <div class="pricing-card community-plan">
+            <div class="pricing-header">
+              <div class="plan-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3>Community</h3>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">0</span>
+                <span class="period">/month</span>
+              </div>
+              <p class="plan-description">Perfect for small teams and personal projects</p>
+            </div>
+            
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Up to 10 containers</li>
+                <li><i class="fas fa-check"></i> Basic monitoring & alerts</li>
+                <li><i class="fas fa-check"></i> Single host support</li>
+                <li><i class="fas fa-check"></i> Community support</li>
+                <li><i class="fas fa-check"></i> Basic log aggregation</li>
+                <li><i class="fas fa-check"></i> RESTful API access</li>
+              </ul>
+            </div>
+            
+            <div class="pricing-footer">
+              <a href="docs/quickstart.html" class="btn btn-outline">Get Started Free</a>
+            </div>
+          </div>
+
+          <!-- Pro Plan -->
+          <div class="pricing-card pro-plan featured">
+            <div class="popular-badge">Most Popular</div>
+            <div class="pricing-header">
+              <div class="plan-icon">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <h3>Pro</h3>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">29</span>
+                <span class="period">/month</span>
+              </div>
+              <p class="plan-description">Ideal for growing teams and production environments</p>
+            </div>
+            
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Up to 100 containers</li>
+                <li><i class="fas fa-check"></i> Advanced monitoring & analytics</li>
+                <li><i class="fas fa-check"></i> Multi-host support</li>
+                <li><i class="fas fa-check"></i> JWT Authentication & RBAC</li>
+                <li><i class="fas fa-check"></i> Email notifications</li>
+                <li><i class="fas fa-check"></i> Advanced log search</li>
+                <li><i class="fas fa-check"></i> Container shell access</li>
+                <li><i class="fas fa-check"></i> Priority support</li>
+                <li><i class="fas fa-check"></i> Export & reporting</li>
+              </ul>
+            </div>
+            
+            <div class="pricing-footer">
+              <a href="#contact" class="btn btn-primary">Start Pro Trial</a>
+            </div>
+          </div>
+
+          <!-- Enterprise Plan -->
+          <div class="pricing-card enterprise-plan">
+            <div class="pricing-header">
+              <div class="plan-icon">
+                <i class="fas fa-building"></i>
+              </div>
+              <h3>Enterprise</h3>
+              <div class="price">
+                <span class="currency">$</span>
+                <span class="amount">99</span>
+                <span class="period">/month</span>
+              </div>
+              <p class="plan-description">For large organizations with complex requirements</p>
+            </div>
+            
+            <div class="pricing-features">
+              <ul>
+                <li><i class="fas fa-check"></i> Unlimited containers</li>
+                <li><i class="fas fa-check"></i> All Pro features</li>
+                <li><i class="fas fa-check"></i> Advanced security scanning</li>
+                <li><i class="fas fa-check"></i> Custom SMTP configuration</li>
+                <li><i class="fas fa-check"></i> PostgreSQL database support</li>
+                <li><i class="fas fa-check"></i> Advanced user management</li>
+                <li><i class="fas fa-check"></i> Compliance reporting</li>
+                <li><i class="fas fa-check"></i> 24/7 dedicated support</li>
+                <li><i class="fas fa-check"></i> Custom integrations</li>
+                <li><i class="fas fa-check"></i> On-premise deployment</li>
+              </ul>
+            </div>
+            
+            <div class="pricing-footer">
+              <a href="#contact" class="btn btn-outline">Contact Sales</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-footer-note">
+          <p>
+            <i class="fas fa-info-circle"></i>
+            All plans include 30-day money-back guarantee. 
+            <a href="#contact">Contact us</a> for custom enterprise solutions.
+          </p>
         </div>
       </div>
     </section>
@@ -690,9 +1199,9 @@
             <h3>Live Demo</h3>
             <p>Experience DockSkope in action with our interactive demo.</p>
             <a
-              href="demo.html"
+              href="demo-enhanced.html"
               class="btn btn-outline"
-              >Try Demo</a
+              >Try Live Demo</a
             >
           </div>
         </div>

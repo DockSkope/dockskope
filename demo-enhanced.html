@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>DockSkope Live Demo - Real Container Monitoring</title>
+    <meta
+      name="description"
+      content="Experience DockSkope in action with live container monitoring demo connected to real application"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="assets/favicon.svg"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/favicon.png"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/favicon.ico"
+    />
+
+    <!-- Fonts -->
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link
+      rel="stylesheet"
+      href="styles.css"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      .demo-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--space-2xl);
+      }
+
+      .demo-header {
+        text-align: center;
+        margin-bottom: var(--space-3xl);
+        padding: var(--space-2xl) 0;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        color: white;
+        border-radius: var(--radius-lg);
+      }
+
+      .demo-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: var(--space-sm);
+      }
+
+      .demo-subtitle {
+        font-size: 1.125rem;
+        opacity: 0.9;
+        margin-bottom: var(--space-lg);
+      }
+
+      .demo-status {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-sm);
+        background: rgba(255, 255, 255, 0.2);
+        padding: var(--space-sm) var(--space-lg);
+        border-radius: var(--radius-full);
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      .status-indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #10b981;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-2xl);
+        margin-bottom: var(--space-3xl);
+      }
+
+      .demo-card {
+        background: white;
+        border-radius: var(--radius-lg);
+        padding: var(--space-2xl);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e2e8f0;
+      }
+
+      .demo-card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: var(--space-lg);
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--space-lg);
+        margin-bottom: var(--space-xl);
+      }
+
+      .metric-card {
+        background: #f8fafc;
+        border-radius: var(--radius-md);
+        padding: var(--space-lg);
+        text-align: center;
+        border: 1px solid #e2e8f0;
+      }
+
+      .metric-value {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--primary-color);
+        margin-bottom: var(--space-xs);
+      }
+
+      .metric-label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      .container-list {
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid #e2e8f0;
+        border-radius: var(--radius-md);
+      }
+
+      .container-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--space-md);
+        border-bottom: 1px solid #f1f5f9;
+        transition: background-color 0.2s ease;
+      }
+
+      .container-item:hover {
+        background: #f8fafc;
+      }
+
+      .container-item:last-child {
+        border-bottom: none;
+      }
+
+      .container-info {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+      }
+
+      .container-icon {
+        width: 32px;
+        height: 32px;
+        background: var(--primary-color);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.875rem;
+      }
+
+      .container-details h4 {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 0;
+      }
+
+      .container-details p {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        margin: 0;
+      }
+
+      .container-status {
+        padding: var(--space-xs) var(--space-sm);
+        border-radius: var(--radius-sm);
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .status-running {
+        background: #dcfce7;
+        color: #166534;
+      }
+
+      .status-stopped {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+
+      .status-paused {
+        background: #fef3c7;
+        color: #92400e;
+      }
+
+      .demo-actions {
+        display: flex;
+        gap: var(--space-md);
+        justify-content: center;
+        margin-top: var(--space-2xl);
+      }
+
+      .demo-note {
+        background: #f0f9ff;
+        border: 1px solid #0ea5e9;
+        border-radius: var(--radius-md);
+        padding: var(--space-lg);
+        margin-top: var(--space-2xl);
+        text-align: center;
+      }
+
+      .demo-note p {
+        color: #0c4a6e;
+        margin: 0;
+        font-size: 0.875rem;
+      }
+
+      .demo-note a {
+        color: #0ea5e9;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .demo-note a:hover {
+        text-decoration: underline;
+      }
+
+      .error-message {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #991b1b;
+        padding: var(--space-lg);
+        border-radius: var(--radius-md);
+        text-align: center;
+        margin: var(--space-lg) 0;
+      }
+
+      .loading-spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #f3f4f6;
+        border-radius: 50%;
+        border-top-color: var(--primary-color);
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      @media (max-width: 768px) {
+        .demo-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .metric-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        
+        .demo-title {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .demo-container {
+          padding: var(--space-lg);
+        }
+        
+        .metric-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .demo-actions {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img
+            src="assets/logo.svg"
+            alt="DockSkope"
+            class="logo"
+          />
+          <span class="logo-text">DockSkope</span>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="index.html#features" class="nav-link">Features</a>
+          <a href="index.html#pricing" class="nav-link">Pricing</a>
+          <a href="https://github.com/DockSkope" class="nav-link" target="_blank">GitHub</a>
+          <a href="docs/index.html" class="nav-link">Documentation</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-buttons">
+          <a href="index.html" class="btn btn-secondary">Back to Home</a>
+        </div>
+        <div class="nav-toggle" id="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Demo Content -->
+    <div class="demo-container">
+      <div class="demo-header">
+        <h1 class="demo-title">Live DockSkope Demo</h1>
+        <p class="demo-subtitle">
+          Experience real-time container monitoring with live data from our running DockSkope instance
+        </p>
+        <div class="demo-status">
+          <div class="status-indicator"></div>
+          <span>Connected to Live Instance</span>
+        </div>
+      </div>
+
+      <div class="demo-grid">
+        <!-- System Metrics -->
+        <div class="demo-card">
+          <h3>
+            <i class="fas fa-chart-line"></i>
+            System Metrics
+          </h3>
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-value" id="cpu-usage">--</div>
+              <div class="metric-label">CPU Usage</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="memory-usage">--</div>
+              <div class="metric-label">Memory Usage</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="disk-usage">--</div>
+              <div class="metric-label">Disk Usage</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="network-io">--</div>
+              <div class="metric-label">Network I/O</div>
+            </div>
+          </div>
+          <div id="metrics-error" class="error-message" style="display: none;">
+            Unable to load system metrics. Please check if the DockSkope backend is running.
+          </div>
+        </div>
+
+        <!-- Container Status -->
+        <div class="demo-card">
+          <h3>
+            <i class="fas fa-cube"></i>
+            Container Status
+          </h3>
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-value" id="total-containers">--</div>
+              <div class="metric-label">Total Containers</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="running-containers">--</div>
+              <div class="metric-label">Running</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="stopped-containers">--</div>
+              <div class="metric-label">Stopped</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="paused-containers">--</div>
+              <div class="metric-label">Paused</div>
+            </div>
+          </div>
+          <div id="containers-error" class="error-message" style="display: none;">
+            Unable to load container data. Please check if Docker is running and accessible.
+          </div>
+        </div>
+      </div>
+
+      <!-- Container List -->
+      <div class="demo-card">
+        <h3>
+          <i class="fas fa-list"></i>
+          Container Details
+        </h3>
+        <div class="container-list" id="container-list">
+          <div style="text-align: center; padding: var(--space-2xl); color: var(--text-secondary);">
+            <div class="loading-spinner"></div>
+            <p style="margin-top: var(--space-sm);">Loading containers...</p>
+          </div>
+        </div>
+        <div id="container-list-error" class="error-message" style="display: none;">
+          Unable to load container list. Please check your connection and try again.
+        </div>
+      </div>
+
+      <!-- Demo Actions -->
+      <div class="demo-actions">
+        <a href="http://localhost:3002" class="btn btn-primary" target="_blank">
+          <i class="fas fa-external-link-alt"></i>
+          Open Full Dashboard
+        </a>
+        <a href="docs/quickstart.html" class="btn btn-secondary">
+          <i class="fas fa-book"></i>
+          Installation Guide
+        </a>
+        <button onclick="refreshData()" class="btn btn-outline">
+          <i class="fas fa-sync-alt"></i>
+          Refresh Data
+        </button>
+      </div>
+
+      <!-- Demo Note -->
+      <div class="demo-note">
+        <p>
+          <i class="fas fa-info-circle"></i>
+          This demo connects to a live DockSkope instance running on localhost:9448. 
+          <a href="http://localhost:3002" target="_blank">Click here</a> to access the full dashboard with authentication.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // API Configuration
+      const API_BASE_URL = 'http://localhost:9448';
+      
+      // Demo data refresh interval (5 seconds)
+      let refreshInterval;
+      
+      // Initialize demo
+      document.addEventListener('DOMContentLoaded', function() {
+        loadDemoData();
+        startAutoRefresh();
+      });
+      
+      // Load demo data from live API
+      async function loadDemoData() {
+        try {
+          await Promise.all([
+            loadSystemMetrics(),
+            loadContainerData()
+          ]);
+        } catch (error) {
+          console.error('Error loading demo data:', error);
+        }
+      }
+      
+      // Load system metrics
+      async function loadSystemMetrics() {
+        try {
+          const response = await fetch(`${API_BASE_URL}/system/metrics`);
+          if (!response.ok) throw new Error('Failed to fetch metrics');
+          
+          const data = await response.json();
+          
+          // Update CPU usage
+          const cpuUsage = data.cpu_usage || 0;
+          document.getElementById('cpu-usage').textContent = `${cpuUsage.toFixed(1)}%`;
+          
+          // Update memory usage
+          const memoryUsage = data.memory_usage || 0;
+          document.getElementById('memory-usage').textContent = `${memoryUsage.toFixed(1)}%`;
+          
+          // Update disk usage
+          const diskUsage = data.disk_usage || 0;
+          document.getElementById('disk-usage').textContent = `${diskUsage.toFixed(1)}%`;
+          
+          // Update network I/O (simplified)
+          const networkIO = data.network_io || '0 MB';
+          document.getElementById('network-io').textContent = networkIO;
+          
+          // Hide error message
+          document.getElementById('metrics-error').style.display = 'none';
+          
+        } catch (error) {
+          console.error('Error loading system metrics:', error);
+          document.getElementById('metrics-error').style.display = 'block';
+        }
+      }
+      
+      // Load container data
+      async function loadContainerData() {
+        try {
+          const response = await fetch(`${API_BASE_URL}/containers`);
+          if (!response.ok) throw new Error('Failed to fetch containers');
+          
+          const containers = await response.json();
+          
+          // Update container counts
+          const total = containers.length;
+          const running = containers.filter(c => c.status === 'running').length;
+          const stopped = containers.filter(c => c.status === 'stopped').length;
+          const paused = containers.filter(c => c.status === 'paused').length;
+          
+          document.getElementById('total-containers').textContent = total;
+          document.getElementById('running-containers').textContent = running;
+          document.getElementById('stopped-containers').textContent = stopped;
+          document.getElementById('paused-containers').textContent = paused;
+          
+          // Update container list
+          updateContainerList(containers);
+          
+          // Hide error messages
+          document.getElementById('containers-error').style.display = 'none';
+          document.getElementById('container-list-error').style.display = 'none';
+          
+        } catch (error) {
+          console.error('Error loading container data:', error);
+          document.getElementById('containers-error').style.display = 'block';
+          document.getElementById('container-list-error').style.display = 'block';
+        }
+      }
+      
+      // Update container list display
+      function updateContainerList(containers) {
+        const containerList = document.getElementById('container-list');
+        
+        if (containers.length === 0) {
+          containerList.innerHTML = `
+            <div style="text-align: center; padding: var(--space-2xl); color: var(--text-secondary);">
+              <i class="fas fa-cube" style="font-size: 2rem; margin-bottom: var(--space-sm); opacity: 0.5;"></i>
+              <p>No containers found</p>
+            </div>
+          `;
+          return;
+        }
+        
+        containerList.innerHTML = containers.map(container => `
+          <div class="container-item">
+            <div class="container-info">
+              <div class="container-icon">
+                <i class="fas fa-cube"></i>
+              </div>
+              <div class="container-details">
+                <h4>${container.name || container.id.substring(0, 12)}</h4>
+                <p>${container.image || 'Unknown Image'}</p>
+              </div>
+            </div>
+            <div class="container-status status-${container.status}">
+              ${container.status}
+            </div>
+          </div>
+        `).join('');
+      }
+      
+      // Refresh data manually
+      function refreshData() {
+        const refreshBtn = document.querySelector('button[onclick="refreshData()"]');
+        const icon = refreshBtn.querySelector('i');
+        
+        // Add loading state
+        icon.classList.add('fa-spin');
+        refreshBtn.disabled = true;
+        
+        loadDemoData().finally(() => {
+          // Remove loading state
+          icon.classList.remove('fa-spin');
+          refreshBtn.disabled = false;
+        });
+      }
+      
+      // Start auto-refresh
+      function startAutoRefresh() {
+        refreshInterval = setInterval(loadDemoData, 5000); // Refresh every 5 seconds
+      }
+      
+      // Stop auto-refresh
+      function stopAutoRefresh() {
+        if (refreshInterval) {
+          clearInterval(refreshInterval);
+        }
+      }
+      
+      // Cleanup on page unload
+      window.addEventListener('beforeunload', stopAutoRefresh);
+    </script>
+  </body>
+</html>
