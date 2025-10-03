@@ -91,9 +91,9 @@ document.addEventListener('DOMContentLoaded', function () {
           top: offsetTop,
           behavior: 'smooth',
         });
-        
+
         // Update active nav link
-        document.querySelectorAll('.nav-link').forEach(link => {
+        document.querySelectorAll('.nav-link').forEach((link) => {
           link.classList.remove('active');
         });
         this.classList.add('active');
@@ -105,23 +105,23 @@ document.addEventListener('DOMContentLoaded', function () {
   const navbar = document.querySelector('.navbar');
   if (navbar) {
     let lastScrollY = window.scrollY;
-    
+
     window.addEventListener('scroll', function () {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY > 50) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
       }
-      
+
       // Hide/show navbar on scroll
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         navbar.style.transform = 'translateY(-100%)';
       } else {
         navbar.style.transform = 'translateY(0)';
       }
-      
+
       lastScrollY = currentScrollY;
     });
   }
@@ -129,11 +129,13 @@ document.addEventListener('DOMContentLoaded', function () {
   // Enhanced Animated Counters
   const counters = document.querySelectorAll('.stat-number');
   const animateCounters = () => {
-    counters.forEach(counter => {
-      const target = parseInt(counter.getAttribute('data-target') || counter.textContent);
+    counters.forEach((counter) => {
+      const target = parseInt(
+        counter.getAttribute('data-target') || counter.textContent
+      );
       const increment = target / 100;
       let current = 0;
-      
+
       const updateCounter = () => {
         if (current < target) {
           current += increment;
@@ -143,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
           counter.textContent = target;
         }
       };
-      
+
       updateCounter();
     });
   };
@@ -151,15 +153,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // Intersection Observer for animations
   const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    rootMargin: '0px 0px -50px 0px',
   };
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
-        
+
         // Animate counters when stats section is visible
         if (entry.target.classList.contains('hero-stats')) {
           animateCounters();
@@ -169,28 +171,32 @@ document.addEventListener('DOMContentLoaded', function () {
   }, observerOptions);
 
   // Observe elements for animation
-  document.querySelectorAll('.hero-stats, .architecture-card, .feature-card, .get-started-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-    observer.observe(el);
-  });
+  document
+    .querySelectorAll(
+      '.hero-stats, .architecture-card, .feature-card, .get-started-card'
+    )
+    .forEach((el) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+      observer.observe(el);
+    });
 
   // Enhanced Dashboard Mockup Interactions
   const sidebarItems = document.querySelectorAll('.sidebar-item');
   const mockupTabs = document.querySelectorAll('.mockup-tab');
 
-  sidebarItems.forEach(item => {
-    item.addEventListener('click', function() {
+  sidebarItems.forEach((item) => {
+    item.addEventListener('click', function () {
       const targetTab = this.getAttribute('data-tab');
-      
+
       // Update active states
-      sidebarItems.forEach(si => si.classList.remove('active'));
-      mockupTabs.forEach(tab => tab.classList.remove('active'));
-      
+      sidebarItems.forEach((si) => si.classList.remove('active'));
+      mockupTabs.forEach((tab) => tab.classList.remove('active'));
+
       this.classList.add('active');
       document.getElementById(targetTab).classList.add('active');
-      
+
       // Add click animation
       this.style.transform = 'scale(0.95)';
       setTimeout(() => {
@@ -200,31 +206,33 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Enhanced Button Hover Effects
-  document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('mouseenter', function() {
+  document.querySelectorAll('.btn').forEach((btn) => {
+    btn.addEventListener('mouseenter', function () {
       this.style.transform = 'translateY(-2px) scale(1.02)';
     });
-    
-    btn.addEventListener('mouseleave', function() {
+
+    btn.addEventListener('mouseleave', function () {
       this.style.transform = '';
     });
   });
 
   // Enhanced Card Hover Effects
-  document.querySelectorAll('.architecture-card, .feature-card, .get-started-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-8px) scale(1.02)';
+  document
+    .querySelectorAll('.architecture-card, .feature-card, .get-started-card')
+    .forEach((card) => {
+      card.addEventListener('mouseenter', function () {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+      });
+
+      card.addEventListener('mouseleave', function () {
+        this.style.transform = '';
+      });
     });
-    
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = '';
-    });
-  });
 
   // Parallax Effect for Hero Background
   const heroBackground = document.querySelector('.hero-background');
   if (heroBackground) {
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
       const scrolled = window.pageYOffset;
       const rate = scrolled * -0.5;
       heroBackground.style.transform = `translateY(${rate}px)`;
@@ -232,25 +240,29 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Enhanced Loading Animation
-  const loadingElements = document.querySelectorAll('.hero-badge, .hero-title, .hero-subtitle, .hero-buttons');
+  const loadingElements = document.querySelectorAll(
+    '.hero-badge, .hero-title, .hero-subtitle, .hero-buttons'
+  );
   loadingElements.forEach((el, index) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
-    el.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.2}s`;
-    
+    el.style.transition = `all 0.8s cubic-bezier(0.4, 0, 0.2, 1) ${
+      index * 0.2
+    }s`;
+
     setTimeout(() => {
       el.style.opacity = '1';
       el.style.transform = 'translateY(0)';
-    }, 100 + (index * 200));
+    }, 100 + index * 200);
   });
 
   // Enhanced Form Interactions
-  document.querySelectorAll('input, textarea').forEach(input => {
-    input.addEventListener('focus', function() {
+  document.querySelectorAll('input, textarea').forEach((input) => {
+    input.addEventListener('focus', function () {
       this.parentElement.classList.add('focused');
     });
-    
-    input.addEventListener('blur', function() {
+
+    input.addEventListener('blur', function () {
       if (!this.value) {
         this.parentElement.classList.remove('focused');
       }
@@ -271,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function () {
   `;
   document.body.appendChild(progressBar);
 
-  window.addEventListener('scroll', function() {
+  window.addEventListener('scroll', function () {
     const scrollTop = window.pageYOffset;
     const docHeight = document.body.offsetHeight - window.innerHeight;
     const scrollPercent = (scrollTop / docHeight) * 100;
@@ -279,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Enhanced Keyboard Navigation
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       const mobileMenu = document.querySelector('.mobile-menu');
       if (mobileMenu) {
@@ -295,11 +307,11 @@ document.addEventListener('DOMContentLoaded', function () {
   let touchStartY = 0;
   let touchEndY = 0;
 
-  document.addEventListener('touchstart', function(e) {
+  document.addEventListener('touchstart', function (e) {
     touchStartY = e.changedTouches[0].screenY;
   });
 
-  document.addEventListener('touchend', function(e) {
+  document.addEventListener('touchend', function (e) {
     touchEndY = e.changedTouches[0].screenY;
     handleSwipe();
   });
@@ -307,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function handleSwipe() {
     const swipeThreshold = 50;
     const diff = touchStartY - touchEndY;
-    
+
     if (Math.abs(diff) > swipeThreshold) {
       if (diff > 0) {
         // Swipe up - could trigger some action
@@ -326,29 +338,30 @@ document.addEventListener('DOMContentLoaded', function () {
   function checkPerformance() {
     frameCount++;
     const currentTime = performance.now();
-    
+
     if (currentTime >= lastTime + 1000) {
       const fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
       frameCount = 0;
       lastTime = currentTime;
-      
+
       // Log FPS for debugging (remove in production)
       if (fps < 30) {
         console.warn('Low FPS detected:', fps);
       }
     }
-    
+
     requestAnimationFrame(checkPerformance);
   }
-  
+
   checkPerformance();
 
   // Enhanced Accessibility
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function (e) {
     // Skip to main content
     if (e.key === 'Tab' && e.shiftKey && e.altKey) {
       e.preventDefault();
-      const mainContent = document.querySelector('main') || document.querySelector('.hero');
+      const mainContent =
+        document.querySelector('main') || document.querySelector('.hero');
       if (mainContent) {
         mainContent.focus();
       }
@@ -356,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Enhanced Error Handling
-  window.addEventListener('error', function(e) {
+  window.addEventListener('error', function (e) {
     console.error('JavaScript error:', e.error);
     // Could send to analytics service here
   });
@@ -371,3 +384,160 @@ document.addEventListener('DOMContentLoaded', function () {
     'color: #10b981; font-size: 14px;'
   );
 });
+
+// Contact form functionality
+document.addEventListener('DOMContentLoaded', function () {
+  const contactForm = document.querySelector('.contact-form-content');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Get form data
+      const formData = new FormData(contactForm);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const subject = formData.get('subject');
+      const message = formData.get('message');
+
+      // Simple validation
+      if (!name || !email || !subject || !message) {
+        showNotification('Please fill in all fields', 'error');
+        return;
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showNotification('Please enter a valid email address', 'error');
+        return;
+      }
+
+      // Simulate form submission
+      showNotification(
+        "Thank you for your message! We'll get back to you soon.",
+        'success'
+      );
+
+      // Reset form
+      contactForm.reset();
+    });
+  }
+});
+
+// Notification system
+function showNotification(message, type = 'info') {
+  // Remove existing notifications
+  const existingNotifications = document.querySelectorAll('.notification');
+  existingNotifications.forEach((notification) => notification.remove());
+
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.innerHTML = `
+    <div class="notification-content">
+      <i class="fas fa-${
+        type === 'success'
+          ? 'check-circle'
+          : type === 'error'
+          ? 'exclamation-circle'
+          : 'info-circle'
+      }"></i>
+      <span>${message}</span>
+    </div>
+    <button class="notification-close">
+      <i class="fas fa-times"></i>
+    </button>
+  `;
+
+  // Add styles
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: ${
+      type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'
+    };
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 400px;
+    animation: slideInRight 0.3s ease-out;
+  `;
+
+  // Add to page
+  document.body.appendChild(notification);
+
+  // Close button functionality
+  const closeBtn = notification.querySelector('.notification-close');
+  closeBtn.addEventListener('click', () => {
+    notification.style.animation = 'slideOutRight 0.3s ease-in';
+    setTimeout(() => notification.remove(), 300);
+  });
+
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.style.animation = 'slideOutRight 0.3s ease-in';
+      setTimeout(() => notification.remove(), 300);
+    }
+  }, 5000);
+}
+
+// Add notification animations to CSS
+const notificationStyles = document.createElement('style');
+notificationStyles.textContent = `
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .notification-close {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+  
+  .notification-close:hover {
+    opacity: 1;
+  }
+  
+  .notification-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+  }
+  
+  .notification-content i {
+    font-size: 1.25rem;
+  }
+`;
+document.head.appendChild(notificationStyles);
